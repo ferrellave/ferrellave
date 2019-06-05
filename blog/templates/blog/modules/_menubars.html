@@ -1,0 +1,34 @@
+
+        <!--MENU BOTTOM -->
+        <nav class="heavenSouth1" id="heavenSouth">
+        <div class="southWing">
+            {% include 'blog/modules/_heavenSouth.html' %}
+        </div>
+        </nav>
+        <!--MENU IZQUIERDO -->
+        <nav class="heavenEast">
+        <div class="eastWing">
+            {% include 'blog/modules/_heavenEast.html' %}
+        </div>
+        </nav>
+        <!-- MENU DERECHO CONTENEDOR -->
+
+            {% include 'blog/modules/_heavenWest.html' %}
+        
+
+
+    <!--MENU DE CATEGORIAS -->
+    <nav class="engelShip1" id="engelShip">
+        {% include 'blog/modules/_engelship.html'%}
+    </nav>
+
+    {%if not userprofile.slug%}
+    <!--SLIDE MAPA PRINCIPAL-->
+        {%for config in config%}
+        {%if not config.telefono02 == "False"%}
+    <section id="world" class="world">
+        {% include 'blog/modules/_world.html'%}
+    </section>
+        {%endif%}
+        {%endfor%}
+    {%endif%}

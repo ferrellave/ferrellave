@@ -1,0 +1,68 @@
+{% for config in config %}
+
+{% if user.is_authenticated %}  
+<a href="{% url 'blog.crear' %}">
+<section class="release">
+    <h3>{%if user.userprofile.name%}{{user.userprofile.name}}{%else%}{{user.username}}{%endif%}, Su Código promocional es 0{{user.userprofile.id}}0{{user.userprofile.id}}.</br>Disfrute ya del 20% de descuento en todas nuestras ofertas</h3>
+</section>
+</a>
+
+{% else %}
+<section class="release">
+<img width="80%" src="http://www.megapisosgypsum.com/media/articles/backgrounds/sucursal.png">
+</section>
+
+{% endif %}
+<footer>
+        <section class="contacta">
+            <p><strong>{{config.text02}}</strong> {{config.description|safe}}</p>
+        </section>
+        <table>
+            <td>
+                <strong>{{config.webName}}</strong>
+            </td>
+             <td>
+                <a href="{% url 'blog.article_list'%}" >Inicio</a>
+                {%for page in page%}
+                <a href="{% url 'blog.page_detail' page.slug %}">{{page.name}}</a>{% endfor %}
+                <a href="{% url 'blog.contact'%}" >Contacto</a>
+            </td>
+            <td>
+                 {% for profile in profile %}
+                <a href="{% url 'blog.profile_detail' profile.slug %}" >{{profile.name}}</a>
+                {%endfor%}
+            </td>
+            <td>
+                 {% for section in section %}
+                <a href="{% url 'blog.section_detail' section.slug %}" >{{section.name}}</a>
+                {%endfor%}
+            </td>
+           <td>
+                {% for red in red %}
+                <a href="{{red.url}}">{{red.name}}</a>
+                {% endfor %}
+            </td>
+        </table>
+
+<style> 
+.actionHome{
+background: url(/media/favicon/logoM.png) no-repeat center left 5px !important;
+background-size: auto auto;
+background-size: 40px !important;
+}
+.maps iframe{height:100%!important;}
+.maps strong{padding:5px; color:white;font-family:oswald;}
+.space {min-height: auto!important}
+.eastWing li a span {
+    display: inline-block;
+    margin-right: 0px;
+    width: 35px;
+    height: 50px;
+    background: url(/media/config/maps.png)no-repeat center center;
+    background-size: 60%;
+    vertical-align: middle;
+}
+</style>
+    
+    </footer>
+{%endfor%}

@@ -1,0 +1,78 @@
+{% extends 'blog/base_blog.html' %}
+
+{% block title %}{% for config in config %}{{config.webName}}{%endfor%} {% for section in section %}
+{% if section.slug == link.slug %}{{section.name}}{%endif%}{%endfor%}{% endblock title %}
+
+{% block blog_content %}
+<!--//////////////////CONTENEDOR PRINCIPAL -->
+    <section class="universe1" id="universe">
+         {% include 'blog/modules/_menubars.html'%}
+{% for section in section %}
+{% if section.slug == link.slug %}
+    <!--CONFIG -->
+     {% include 'blog/modules/_config.html' %}
+    <!--/////////////////BARRAS DE MENUS -->
+   
+
+<style type="text/css">
+    .eye{
+        border-radius: 5px;
+    }
+</style>
+        <!--CONTENEDOR PRINCIPAL IZQUIERDO (PORTADA) -->
+        <section class="sun" id="sun">
+            <section class="space">
+                {% include 'blog/modules/_sun.html' %}
+            </section>   
+        </section><!--
+        CONTENEDOR PRINCIPAL DERECHO  (CONTENIDO) 
+        --><section class="moon" id="moon">
+        
+            <!--CONTENEDOR PRINCIPAL DERECHO  (LISTA DE ARTICULOS Y PERFILES) -->
+            <section class="menguante" id="menguante">
+                <section id="sideB" class="sideB">
+                    {% include 'blog/modules/_articlesList.html' %}
+                </section>
+                {% for profile in profile %}
+                    <section id="{{profile.slug}}" class="category{{profile.id}}">
+                    {% include 'blog/modules/_categoryProfilesList.html' %}
+                    </section>
+                {% endfor %}
+            </section>
+        </section>
+
+
+    <style type="text/css">
+    .planet{
+        background: {{section.language.body}}!important;
+    }
+    </style>
+
+{% endif %}
+{% endfor %}
+
+    <!--SLIDE MENU PRINCIPAL EXPLORAR -->
+    <section class="gog" id="gog">
+        {% include 'blog/modules/_gog.html'%}
+    </section>
+
+    <style type="text/css">
+
+{% for section in section %}
+#engelBless{{section.slug}}{
+background: rgba(0,0,0,0.5) url(/media/{{section.background}}) no-repeat center center;
+background-size: 200%;
+border-left: 10px solid {{section.color}};
+}
+#engelSpan{{section.slug}}{
+background: {{section.color}} url(/media/{{section.photo}}) no-repeat center center;
+background-size: 100% 100%;
+border: 4px solid rgba(255,255,255,0.3);
+}
+{%endfor%}
+
+</style>
+
+        {% include 'blog/modules/_footer.html' %}
+    </section>
+{% endblock blog_content %}

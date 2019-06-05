@@ -1,0 +1,103 @@
+{% load staticfiles %}
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% for userprofile in userprofile %}
+{% if userprofile.slug == link.slug %}{{userprofile.name}}{%endif%}{%endfor%} en {% for config in config %}{{config.webName}}{%endfor%}{% endblock title %}</title>
+    <link rel="stylesheet" href="/static/css/main.css?v=1">
+    <script src="{% static 'js/main.js' %}"></script>
+    <link href="http://fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Shadows+Into+Light' rel='stylesheet' type='text/css'>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js" type="text/javascript"></script>
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+</head>
+<body>
+
+  {% include 'blog/modules/_form.html' %}
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.5";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+{% include "_messages.html" %}
+
+{% for userprofile in userprofile %}
+{% if userprofile.slug == link.slug %}
+
+{% block content %}
+
+    <!--CONFIG -->
+     {% include 'blog/modules/_config.html' %}
+
+    <!--/////////////////BARRAS DE MENUS -->
+
+    {% include 'accounts/modules/_menubars.html'%}
+
+<!--//////////////////CONTENEDOR PRINCIPAL -->
+    <section class="universe1" id="universe">
+
+        <!--CONTENEDOR PRINCIPAL IZQUIERDO (PORTADA) -->
+        <section class="sun1" id="sun">
+            <section class="space">
+                {% include 'blog/modules/_sun.html' %}
+            </section>   
+        </section><!--
+        CONTENEDOR PRINCIPAL DERECHO  (CONTENIDO) 
+        --><section class="moon1" id="moon">
+            <section class="fullMoon" id="fullmoon">
+                    {% include 'blog/modules/_madnesss.html' %}
+            </section>
+            <!--CONTENEDOR PRINCIPAL DERECHO  (LISTA DE ARTICULOS Y PERFILES) -->
+        </section>
+
+        {% include 'blog/modules/_footer.html' %}
+    </section>
+
+
+
+{% endblock content %}
+
+{% endif %}
+{% endfor %}
+
+    <!--SLIDE MENU PRINCIPAL EXPLORAR -->
+    <section class="gog" id="gog">
+        {% include 'blog/modules/_gog.html'%}
+    </section>
+{% include 'blog/modules/_world.html'%}
+    <style type="text/css">
+    .sun1{
+        width: 361px;
+        position: fixed;
+        top: 50px;
+        height: 100%;
+        left: 0px;
+    }
+    .universe1{
+        padding-left: 361px!important;
+    }
+    @media screen and (max-width:1000px){
+      .sun1{
+        width: 100%;
+        position: relative;
+        top: 0px;
+        height: auto;
+        left: 0px;
+    }
+    .universe1{
+        padding-left: 0px!important;
+    }
+
+    }
+</style>
+
+</body>
+</html>

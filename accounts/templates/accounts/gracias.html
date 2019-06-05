@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Gracias por registrarte{% endblock title %}
+
+{% block content %}
+<section class="containerAccount">
+    <article class="containerForm">
+        <div class="containerFormDiv">
+
+    <h2>{{ username }} gracias por registrarte!</h2>
+    <a href="{% url 'accounts.login' %}" class="btnPrincipal">INICIA SESIÓN PARA CONTINUAR</a>
+{% endblock content %}
+
+</div>
+</article>
+</section>   

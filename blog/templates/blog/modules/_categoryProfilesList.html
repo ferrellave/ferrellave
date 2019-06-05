@@ -1,0 +1,98 @@
+<!--
+                                    <section class="names">        
+                                    <article class="planet">
+                                    <div class="orbit">
+                                        <div class="air">
+                                            <span class="hare"></span>
+                                        </div><div class="earth">
+                                            <div class="wood wood01">
+                                                <h3>{{section.name}}</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </article>
+                                    </section>
+-->
+<!--EXPERIENCIAS-->
+
+    {% for article in article %}
+    {% if article.section.id == section.id %}
+
+    {%if section.slug%}
+    {%if section.id == article.section.id%}
+        {% include 'blog/modules/_articles.html'%}
+    {%endif%}
+    {%endif%}
+
+    {%if profile.slug%}
+    {%if profile.id == article.profile.id%}
+        {% include 'blog/modules/_articles.html'%}
+    {%endif%}
+    {%endif%}
+
+    {%if tag.slug%}
+    {%if tag.id == article.tag.id%}
+        {% include 'blog/modules/_articles.html'%}
+    {%endif%}
+    {%endif%}
+
+    {%if trend.slug%}
+    {%if trend.id == article.trend.id%}
+        {% include 'blog/modules/_articles.html'%}
+    {%endif%}
+    {%endif%}
+
+    {%if not section.slug and not tag.slug and not trend.slug %}
+        {% include 'blog/modules/_articles.html'%}
+    {%endif%}
+
+
+    {% endif %}
+    {% endfor %}
+
+             <script type="text/javascript">
+        function category{{section.id}}()
+            {
+                    if(document.getElementById('{{section.slug}}').className == 'category{{section.id}}')
+                    {  
+                        {% for article in article %}
+                    document.getElementById('{{article.section.slug}}').className = 'category{{article.section.id}}';
+                    {% endfor %}
+                    document.getElementById('{{section.slug}}').className = 'category{{section.id}}0';
+                    document.getElementById('sideB').className = 'sideB0';
+                    document.getElementById('menguante').className = 'menguante';
+                    document.getElementById('fullmoon').className = 'fullmoon0';
+
+                    } else {
+                        {% for article in article %}
+                    document.getElementById('{{article.section.slug}}').className = 'category{{article.section.id}}';
+                    {% endfor %}
+                    document.getElementById('{{section.slug}}').className = 'category{{section.id}}';
+                        document.getElementById('sideB').className = 'sideB';
+                    document.getElementById('menguante').className = 'menguante';
+                    document.getElementById('fullmoon').className = 'fullmoon0';
+                    
+                            }
+            } 
+            </script>
+
+
+            <style type="text/css">
+        .category{{section.id}}{
+            opacity: 0;
+            position: absolute;
+            overflow: hidden;
+            height: 0px;
+            z-index: 0;
+        }
+        .category{{section.id}}0{
+            opacity: 1;
+        }
+
+        .sideB0{
+            display: none;
+        }
+        .menguante0{
+            display: none;
+        }
+            </style>

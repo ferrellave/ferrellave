@@ -1,0 +1,120 @@
+<a href="{% url 'blog.article_detail' article.slug %}"><article class="planet" id="planet{{article.id}}">
+            <div class="orbit" id="orbit{{article.id}}">
+                <div class="earth">
+
+
+                    <div class="air">
+                    <div class="googles">
+                        {% if article.background %}
+                        <img src="/media/{{article.background}}">
+                        {% else %}
+                            {%if article.section%}
+                        <img src="/media/{{article.section.background}}">
+                            {%else%}
+                            {% for config in config %}
+                            <img src="/media/{{config.background}}">
+                            {%endfor%}
+                            {%endif%}
+
+                        {%endif%}
+                    </div>
+                </div>
+
+                    <div class="wood wood01" >
+                        <h3>{{article.title}}</h3>
+                        <h6>
+                         <strong>{{article.owner.userprofile.name}} <span class="by{{article.id}} ksna"></span></strong>
+                     </h6>
+                      <h5><p><span>{{article.section}} - Hace {{ article.create_at|timesince }}</span></p></h5>
+                    </div>
+           <!--        
+                    <div class="wood wood02" id="wood{{article.id}}">
+                        {%if article.owner.userprofile.profile %}<h5 ><span class="bySec{{article.id}} hare"></span> En {{article.owner.userprofile.profile}} > {{article.section}}</h5>{%endif%}
+                        {%if article.tag %}<h5 >{{article.tag}}</h5>{%endif%}
+                        {%if article.trend %}<h5 >{{article.trend}}</h5>{%endif%}
+
+ <div class="wood02">
+{% if article.background %}
+<li><span class="dinos01 gold"></span></li>
+{%endif%}                       
+{% if article.audio %}
+<li><span class="dinos02"></span></li>
+{%endif%}
+{% if article.youtube %}
+<li><span class="dinos03"></span></li>
+{%endif%}
+{% if article.archive %}
+<li><span class="dinos04"></span></li>
+{%endif%}
+{% if article.mapa %}
+<li><span class="dinos05"></span></li>
+{%endif%}
+{% if article.live %}
+<li><span class="dinos06"></span></li>
+{%endif%}
+{% if article.start %}
+<li><span class="dinos07"></span></li>
+{%endif%}
+{% if article.body %}
+<li><span class="dinos00"></span></li>
+{%endif%}
+{% if article.multimedia %}
+<li><span class="dinos09"></span></li>
+{%endif%}
+  </div>
+
+                    </div>
+-->
+
+                    <div class="wood wood03">
+                    	
+                    </div>
+                </div>
+
+            </div>
+            </article></a>
+
+<style type="text/css">
+                #orbit{{article.id}}{
+                    none;
+                }
+                
+                #wood{{article.id}} h5 {
+                color: {{article.section.color}};
+                    }
+                    {%if not article.owner.userprofile.photo%}
+	                .by{{article.id}}{
+	                        background: {{article.owner.userprofile.profile.color}} url(/media/{{article.owner.userprofile.profile.photo}}) no-repeat center center;
+	                        background-size: 100% auto;
+                            border: none;
+	                }
+                    {%else%}
+                    .by{{article.id}}{
+                            background: {{article.owner.userprofile.color01}} url(/media/{{article.owner.userprofile.photo}}) no-repeat center center;
+                            background-size: 100% auto;
+                            border: none;
+                    }
+
+                    {%endif%}
+
+                .bySec{{article.id}}{
+                        background: {{article.section.color}} url(/media/{{article.section.photo}}) no-repeat center center!important;
+                        background-size: 90% 90%!important;
+                }
+
+                #byTag{{article.id}}{
+                        background: url(/media/{{article.tag.photo}}) no-repeat center center;
+                        background-size: 90% 90%;
+                }
+
+                #byTrend{{article.id}}{
+                        background: url(/media/{{article.trend.photo}}) no-repeat center center;
+                        background-size: 90% 90%;
+                }
+
+                #byProf{{article.id}}{
+                        background: url(/media/{{article.profile.photo}}) no-repeat center center;
+                        background-size: 90% 90%;
+                }
+
+                </style>

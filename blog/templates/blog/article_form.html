@@ -1,0 +1,78 @@
+
+{% extends 'blog/base_blog.html' %}
+
+{% block title %}{% for config in config %}{{config.webName}}{% endfor %}{% endblock title %}
+
+{% block blog_content %}
+
+{% include 'blog/modules/_menubars.html'%}
+
+
+
+{% for config in config %}
+<style type="text/css">
+.page-header{
+    background: {{config.color01}}!important;
+}
+.formBack{
+    background: {{config.color}} url(/media/{{config.logo}}) no-repeat center center!important;
+    background-size: auto 80%!important;
+}
+.look{
+    background: url(/static/img/icons/exp.png) {{config.color02}} no-repeat 10px center!important;
+    background-size: 30px!important;
+}
+#id_body{
+    border: 3px solid {{config.color02}};
+}
+#id_section{
+    border: 3px solid {{config.color02}};
+}
+#id_title{
+    border: 3px solid {{config.color02}};
+}
+
+{%if user.userprofile.photo%}
+
+#by{{user.userprofile.id}}{
+    background: {{user.userprofile.profile.color}} url(/media/{{user.userprofile.photo}}) no-repeat center center!important;
+background-size: auto 100%!important;
+border: 2px solid {{user.userprofile.profile.color}};
+                    }
+{%else%}
+.by{{user.userprofile.id}}{
+    background: {{user.userprofile.profile.color}} url(/media/{{user.userprofile.profile.photo}}) no-repeat center center;
+background-size: auto 100%;
+border: 2px solid {{user.userprofile.profile.color}};
+                    }
+{%endif%}
+</style>
+
+<section class="universe1" id="universe">
+<section class="form-art">
+
+    <h2 class="page-header">
+        {%if user.userprofile.slug%}
+        <a href="{% url 'blog.userprofile_detail' user.userprofile.slug %}"><span id="by{{user.userprofile.id}}"></span>{{ user.userprofile.name }}</a> 
+        {%else%}
+        <a href="#"><span class="byh{{user.userprofile.id}}"></span>{{ user.username }}</a> 
+        {%endif%}
+        {%if config.text09%}{{config.text09}}{%else%}¿IO?{%endif%}
+    </h2>
+
+    <section class="forma">
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="look formBack">{%if config.text10%}{{config.text10}}{%else%}{{ nombre_btn }}{%endif%}</button>
+    </form>
+
+     <p class="loginBottom">{%if config.text07%}{{config.text07}}{%else%}¿Not ready?{%endif%} <a href="/">{%if config.text08%}{{config.text08}}{%else%}Look around{%endif%}</a> </br><a href="{% url 'accounts.logout' %}">{%if config.text05%}{{config.text05}}{%else%}Pause{%endif%}</a></p>
+    </section>
+
+     <!--MENU BOTTOM -->
+     </section>
+ </section>
+
+{%endfor%}
+{% endblock blog_content %}

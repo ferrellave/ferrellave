@@ -1,0 +1,60 @@
+
+
+{% for article in article %}
+{% if article.slug == link.slug %}
+
+<style type="text/css">
+    .universe{
+        background: #fff url(/media/{{article.background}})center center;
+        background-size: cover;
+        background-attachment: fixed;
+    }
+</style>
+
+{% block blog_content %}
+
+    <!--CONFIG -->
+     {% include 'blog/modules/_config.html' %}
+
+    <!--/////////////////BARRAS DE MENUS -->
+
+    {% include 'blog/modules/_menubars.html'%}
+
+<!--//////////////////CONTENEDOR PRINCIPAL -->
+    <section class="universe" id="universe">
+        <section class="articleview">
+
+        <!--CONTENEDOR PRINCIPAL IZQUIERDO (PORTADA) -->
+        <section class="sun" id="sun">
+            <section class="space">
+                
+                {% include 'blog/modules/_sun.html' %}
+            </section>   
+        </section><!--
+        CONTENEDOR PRINCIPAL DERECHO  (CONTENIDO) 
+        --><section class="moon" id="moon">
+            <section class="fullMoon" id="fullmoon">
+                    {% include 'blog/modules/_madness.html' %}
+            </section>
+            <!--CONTENEDOR PRINCIPAL DERECHO  (LISTA DE ARTICULOS Y PERFILES) -->
+            </section>
+
+        </section>
+
+        {% include 'blog/modules/_footer.html' %}
+
+    </section>
+
+{% endblock blog_content %}
+
+
+    <!--SLIDE MENU PRINCIPAL EXPLORAR -->
+    <section class="gog" id="gog">
+        {% include 'blog/modules/_gog.html'%}
+    </section>
+
+<style type="text/css">
+    
+</style>
+{% endif %}
+{% endfor %}

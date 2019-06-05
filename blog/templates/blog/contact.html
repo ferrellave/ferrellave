@@ -1,0 +1,45 @@
+
+{% extends 'blog/base_blog.html' %}
+
+{% block title %}{% for config in config %}{{config.webName}}{% endfor %}{% endblock title %}
+
+{% block blog_content %}
+
+    <!--CONFIG -->
+     {% include 'blog/modules/_config.html' %}
+
+    <!--/////////////////BARRAS DE MENUS -->
+
+    {% include 'blog/modules/_menubars.html'%}
+
+<!--//////////////////CONTENEDOR PRINCIPAL -->
+    <section class="universe" id="universe">
+
+	<section class="log">
+	<section class="forma">
+		<div class="page-header"><h2>Contacto</h2></div>
+
+		 <form id="formulario" method="post" action="" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input required="True" placeholder="Su Email" class="form-control" id="id_correo" name="correo" type="email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <textarea required="True" placeholder="Su Mensaje" class="form-control" cols="40" id="id_mensaje" name="mensaje" rows="10"></textarea>
+                    </div>
+                    <button type="submit" class="look">Enviar</button> 
+                </form>
+	</section>
+	</section>
+
+{% include 'blog/modules/_footer.html' %}      
+    </section>
+
+        <!--SLIDE MENU PRINCIPAL EXPLORAR -->
+    <section class="gog" id="gog">
+        {% include 'blog/modules/_gog.html'%}
+    </section>
+
+{% endblock blog_content %}
+

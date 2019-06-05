@@ -1,0 +1,83 @@
+{% extends 'blog/base_blog.html' %}
+
+{% block title %}Blog - Lista de articulos{% endblock title %}
+
+{% block blog_content %}
+
+<header class="containerTop">
+        <div class="containerNavHeaderTop">
+        </div>
+        <div class="avatarPrincipal"></div>
+        <h2>{% for config in config %}
+            <style type="text/css">
+            .avatarPrincipal{
+  background: {{config.color}} url(/media/{{config.logo}}) no-repeat center center!important;
+background-size: 90%!important;
+}
+            </style>
+
+            {{config.webName}}</h2>
+        <h3>{{config.meta}}</h3>
+        <a href="#" class="btnPrincipal">ÚNETE</a>
+{%endfor%}
+        <div class="containerNavHeader">
+        {% for section in section %}
+
+        <li class="navPrincipalLeftLi"><a href="{% url 'blog.section_detail' section.slug %}"><span class="navPrincipalLogo" id="navPrincipalLogoS{{section.id}}" ></span>{{section.name}}</a></li>
+        {% endfor %} 
+        </div>
+
+</header>
+
+<section class="containerMiddle">
+
+    <h5 class="titles01">
+        Explora Experiencias
+        <a href="{% url 'blog.userprofile_list' %}">Más Experiencias</a>
+    </h5>
+
+    {% for userprofile in userprofile %}
+
+    <article class="articleContainer">
+        <div class="articleTop">
+            <p>El {{ userprofile.create_at|date:'d F Y' }}<span>Hace {{ userprofile.create_at|timesince }}</span></p>
+        </div>
+        <a href="{% url 'blog.profile_detail' userprofile.slug %}"><div class="articleImg" id="articleImg{{userprofile.id}}"></div></a>
+
+        <div class="articleInfoContainer">
+            <a href="#">{{userprofile.id}}</a>
+        </div>
+
+        <h4 class="articleTitle"><a href="{% url 'blog.profile_detail' userprofile.slug %}">{{ userprofile.user }}</a></h4>
+
+    </article>
+    {% endfor %}
+
+</section>
+
+
+<section class="containerNavPrincipalRight" id="containerNavPrincipalRight">
+  <div class="containerNavHeaderTop">
+  </div>
+      <ul>
+      {% if perms.article.can_add %}
+        <li><a href="{% url 'blog.crear' %}">Crear articulo</a></li>
+      {% endif %}
+      </ul>
+          <ul class="nav navbar-nav navbar-right">
+              {% if user.is_authenticated %}
+                <li><a href="{% url 'accounts.index' %}">{{ user.username }}</a></li>
+                <li><a href="{% url 'accounts.logout' %}">Logout</a></li>
+              {% else %}
+
+                <li><a href="{% url 'accounts.registro' %}" >Registro</a></li>
+               
+                <li><a href="{% url 'accounts.login' %}" >Login</a></li>
+              {% endif %}
+          </ul>
+
+          <div id="cargar" class="load"></div>
+
+</section>
+
+{% endblock blog_content %}

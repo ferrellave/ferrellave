@@ -1,0 +1,21 @@
+{%for config in config%}
+<section class="form" id="form">
+       <ul>
+
+  <!--    <iframe src="http://localhost:8000/latinoamerica/crear/"></iframe> -->
+
+      </ul>
+          <ul class="nav navbar-nav navbar-right">
+              {% if user.is_authenticated %}
+
+              <li><a href="{% url 'blog.crear' %}">{%if config.text04%}{{config.text04}}{%else%}Lets Play{%endif%}</a></li>
+              {% else %}
+
+                 <li><a href="{% url 'accounts.registro' %}">{%if config.text04%}{{config.text04}}{%else%}Lets Play{%endif%}</a></li>
+
+              {% endif %}
+          </ul>
+</section>
+<a href="#" onclick="form()"><section class="empty" id="empty"></section></a>
+
+{%endfor%}

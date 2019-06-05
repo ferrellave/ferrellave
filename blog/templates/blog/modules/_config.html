@@ -1,0 +1,602 @@
+{% for config in config %}
+
+<style type="text/css">
+    .contacta{
+    background: rgba(0,0,0,0.1) url(/media/{{config.background}} no-repeat bottom 20px center!important;
+    background-size: cover!important;
+}
+.users{
+    background: {{config.color02}}!important;
+}
+.page-header{
+    background: {{config.color02}}!important;
+}
+.formBack{
+    background: {{config.color}} url(/media/{{config.photo}}) no-repeat center center!important;
+    background-size: auto 80%!important;
+}
+.heavenEast, .moon1, .moon{
+    background: {{config.color04}}!important;
+}
+.log {
+
+    background: #333 url(/media/{{config.background}}) no-repeat center center;
+        background-size: auto auto;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.page-header {
+    background: {{config.color02}}!important;
+}
+footer{
+    background: {{config.color02}}!important;
+}
+.release{
+    background: {{config.color04}}!important;
+}
+.gog0{
+    background: #333!important;
+}
+.northWing1 li a{
+    color: {{config.color04}}!important;
+    border: 1px solid {{config.color04}}!important;
+}
+.look{
+    background: url(/static/img/icons/116.png) {{config.color02}} no-repeat 10px center!important;
+    background-size: 30px!important;
+}
+.actionLogin{
+    background: {{config.color02}} url(/static/img/icons/116.png)no-repeat center right!important;
+    background-size: 40px!important;
+}
+#form a:hover{
+    background-color: {{config.color02}}!important;
+}
+
+.space{
+    background: {{config.color03}}!important;
+}
+
+.page-contact {
+    background: {{config.color02}};
+    color: white;
+    padding: 20px;
+}
+.page-contact h3{
+        font-size: 30px;
+    font-family: oswald;
+    text-align: center;
+    font-weight: normal;
+}
+</style>
+<!--CONF ARTICULOS -->
+
+{% if article.slug %}
+
+<style type="text/css">
+
+{% for section in section %}
+#engelBless{{section.slug}}{
+background: rgba(0,0,0,0.5) url(/media/{{section.background}}) no-repeat center center;
+background-size: 100%;
+border-left: 10px solid {{section.color}};
+}
+#engelSpan{{section.slug}}{
+background: {{section.color}} url(/media/{{section.photo}}) no-repeat center center;
+background-size: cover;
+border: 4px solid rgba(255,255,255,0.3);
+}
+{%endfor%}
+
+    .southWing li a{
+    background: {{article.section.color}} url(/media/{{config.logo}}) no-repeat center 5px;
+    background-size: 33px;
+}
+    .southWing1 li a{
+    background: {{article.section.color}} url(/media/{{config.logo}}) no-repeat center 5px;
+    background-size: 33px;
+}
+
+{% if article.section %}
+.heavenSouth, .heavenSouth1, .searchWing, .sayayingWing {
+    background: {{article.section.color}};
+}
+.godTopBar {
+    width: 100%;
+    height: 50px;
+    background: {{article.section.color}};
+}
+{%else%}
+.heavenSouth, .heavenSouth1, .searchWing, .sayayingWing {
+    background: {{config.color}};
+}
+.godTopBar {
+    width: 100%;
+    height: 50px;
+    background: {{config.color}} url(/static/img/icons/close.png)no-repeat center center;
+        background-size: auto 80%;
+}
+{%endif%}
+
+
+    #eye{{article.id}}{
+    background: {{article.section.color}} url(/media/{{article.section.photo}})no-repeat center center;
+    background-size: cover;
+    }
+{%if article.background%}
+    .sun{
+    background: rgba(255,255,255,0.1) url(/media/{{article.background}}) no-repeat center center;
+    background-size: cover;
+    }
+    .sun1{
+    background: rgba(255,255,255,0.1) url(/media/{{article.background}}) no-repeat center center;
+    background-size: cover;
+    }
+{%else%}
+.sun{
+    background: rgba(255,255,255,0.1) url(/media/{{article.section.background}}) no-repeat center center;
+    background-size: cover;
+    }
+    .sun1{
+    background: rgba(255,255,255,0.1) url(/media/{{article.section.background}}) no-repeat center center;
+    background-size: cover;
+    }
+
+{%endif%}    
+</style>
+
+{%endif%}
+
+<!--CONF USERPROFILES -->
+
+{% if userprofile.slug %}
+
+<style type="text/css">
+{% for section in section %}
+#engelBless{{section.slug}}{
+background: rgba(0,0,0,0.5) url(/media/{{section.background}}) no-repeat center center;
+background-size: 100%;
+border-left: 10px solid {{section.color}};
+}
+#engelSpan{{section.slug}}{
+background: {{section.color}} url(/media/{{section.photo}}) no-repeat center center;
+background-size: cover;
+border: 4px solid rgba(255,255,255,0.3);
+}
+{%endfor%}
+
+    .southWing li a{
+    background: {{userprofile.profile.color}} url(/media/{{config.logo}}) no-repeat center 5px;
+    background-size: 33px;
+}
+    .southWing1 li a{
+    background: {{userprofile.profile.color}} url(/media/{{config.logo}}) no-repeat center 5px;
+    background-size: 33px;
+}
+
+{% if userprofile.profile %}
+.heavenSouth, .heavenSouth1, .searchWing, .sayayingWing {
+    background: {{userprofile.profile.color}};
+}
+.godTopBar {
+    width: 100%;
+    height: 50px;
+    background: {{userprofile.profile.color}} url(/static/img/icons/close.png)no-repeat center center;
+        background-size: auto 80%;
+}
+{%else%}
+.heavenSouth, .heavenSouth1, .searchWing, .sayayingWing {
+    background: {{config.color}};
+}
+.godTopBar {
+    width: 100%;
+    height: 50px;
+    background: {{config.color}} url(/static/img/icons/close.png)no-repeat center center;
+        background-size: auto 80%;
+}
+{%endif%}
+
+{%if not userprofile.photo%}
+
+    #eye{{article.id}}{
+    background: {{userprofile.profile.color}} url(/media/{{userprofile.profile.photo}})no-repeat center center;
+    background-size: cover;
+    }
+{%else%}
+#eye{{article.id}}{
+    background: {{userprofile.profile.color}} url(/media/{{userprofile.photo}})no-repeat center center;
+    background-size: cover;
+    }
+{%endif%}
+
+{%if not userprofile.background%}
+    .sun{
+    background: rgba(255,255,255,0.1) url(/media/{{userprofile.profile.background}}) no-repeat center center;
+    background-size: cover;
+    }
+    .sun1{
+    background: rgba(255,255,255,0.1) url(/media/{{userprofile.background}}) no-repeat center center;
+    background-size: cover;
+    }
+{%else%}
+    .sun{
+    background: rgba(255,255,255,0.1) url(/media/{{userprofile.background}}) no-repeat center center;
+    background-size: cover;
+    }
+    .sun1{
+    background: rgba(255,255,255,0.1) url(/media/{{userprofile.background}}) no-repeat center center;
+    background-size: cover;
+    }
+{%endif%}
+</style>
+
+{%endif%}
+<!--CONF SECTION -->
+
+{%if section.slug%}
+
+<style type="text/css">
+{%for tag in tag %}
+.engelSpan{{tag.slug}}{
+background: {{tag.color}} url(/media/{{tag.photo}}) no-repeat center center!important;
+background-size: 80% 80%!important;
+border: 4px solid rgba(255,255,255,0.3)!important;
+}
+{%endfor%}
+
+    .southWing li a{
+    background: {{section.color}} url(/media/{{config.logo}}) no-repeat center 5px;
+    background-size: 33px;
+}
+    .southWing1 li a{
+    background: {{section.color}} url(/media/{{config.logo}}) no-repeat center 5px;
+    background-size: 33px;
+}
+
+.heavenSouth, .heavenSouth1, .searchWing, .sayayingWing {
+    background: {{section.color}};
+}
+.godTopBar {
+    width: 100%;
+    height: 50px;
+    background: {{section.color}} url(/static/img/icons/close.png)no-repeat center center;
+        background-size: auto 80%;
+}
+
+    #eye{{article.id}}{
+    background: {{section.color}} url(/media/{{section.photo}})no-repeat center center;
+    background-size: cover;
+    }
+
+    .sun{
+    background: rgba(255,255,255,0.1) url(/media/{{section.background}}) no-repeat center center;
+    background-size: cover;
+    }
+    .sun1{
+    background: rgba(255,255,255,0.1) url(/media/{{section.background}}) no-repeat center center;
+    background-size: cover;
+    }
+</style>
+
+{%endif%}
+
+<!--CONF PROFILE -->
+
+{%if profile.slug%}
+
+<style type="text/css">
+{%for tag in tag %}
+.engelSpan{{tag.slug}}{
+background: {{tag.section.color}} url(/media/{{tag.photo}}) no-repeat center center!important;
+background-size: 80% 80%!important;
+border: 4px solid rgba(255,255,255,0.3)!important;
+}
+{%endfor%}
+
+    {% for section in section %}
+#engelBless{{section.slug}}{
+background: rgba(0,0,0,0.5) url(/media/{{section.background}}) no-repeat center center;
+background-size: 100%;
+border-left: 10px solid {{section.color}};
+}
+#engelSpan{{section.slug}}{
+background: {{section.color}} url(/media/{{section.photo}}) no-repeat center center;
+background-size: cover;
+border: 4px solid rgba(255,255,255,0.3);
+}
+{%endfor%}
+
+    .southWing li a{
+    background: {{profile.color}} url(/media/{{config.logo}}) no-repeat center 5px;
+    background-size: 33px;
+}
+    .southWing1 li a{
+    background: {{profile.color}} url(/media/{{config.logo}}) no-repeat center 5px;
+    background-size: 33px;
+}
+
+.heavenSouth, .heavenSouth1, .searchWing, .sayayingWing {
+    background: {{profile.color}};
+}
+.godTopBar {
+    width: 100%;
+    height: 50px;
+    background: {{profile.color}} url(/static/img/icons/close.png)no-repeat center center;
+        background-size: auto 80%;
+}
+
+    #eye{{article.id}}{
+    background: {{profile.color}} url(/media/{{profile.photo}})no-repeat center center;
+    background-size: cover;
+    }
+
+    .sun{
+    background: rgba(255,255,255,0.1) url(/media/{{profile.background}}) no-repeat center center;
+    background-size: cover;
+    }
+    .sun1{
+    background: rgba(255,255,255,0.1) url(/media/{{profile.background}}) no-repeat center center;
+    background-size: cover;
+    }
+</style>
+
+{%endif%}
+
+<!--CONF trends -->
+
+{%if trend.slug%}
+
+<style type="text/css">
+{%for section in section %}
+.engelSpan{{section.slug}}{
+background: {{section.color}} url(/media/{{section.photo}}) no-repeat center center!important;
+background-size: 80% 80%!important;
+border: 4px solid rgba(255,255,255,0.3)!important;
+}
+{%endfor%}
+
+    {% for section in section %}
+#engelBless{{section.slug}}{
+background: rgba(0,0,0,0.5) url(/media/{{section.background}}) no-repeat center center;
+background-size: 100%;
+border-left: 10px solid {{section.color}};
+}
+#engelSpan{{section.slug}}{
+background: {{section.color}} url(/media/{{section.photo}}) no-repeat center center;
+background-size: cover;
+border: 4px solid rgba(255,255,255,0.3);
+}
+{%endfor%}
+
+    .southWing li a{
+    background: {{trend.tag.section.color}} url(/media/{{config.logo}}) no-repeat center 5px;
+    background-size: 33px;
+}
+    .southWing1 li a{
+    background: {{trend.tag.section.color}} url(/media/{{config.logo}}) no-repeat center 5px;
+    background-size: 33px;
+}
+
+.heavenSouth, .heavenSouth1, .searchWing, .sayayingWing {
+    background: {{trend.tag.section.color}};
+}
+.godTopBar {
+    width: 100%;
+    height: 50px;
+    background: {{trend.tag.section.color}} url(/static/img/icons/close.png)no-repeat center center;
+        background-size: auto 80%;
+}
+
+    #eye{{article.id}}{
+    background: rgba(255,255,255,0.5) url(/media/{{trend.photo}})no-repeat center center;
+    background-size: cover;
+    }
+
+    .sun{
+    background: rgba(255,255,255,0.1) url(/media/{{trend.background}}) no-repeat center center;
+    background-size: cover;
+    }
+    .sun1{
+    background: rgba(255,255,255,0.1) url(/media/{{trend.background}}) no-repeat center center;
+    background-size: cover;
+    }
+</style>
+
+{%endif%}
+
+<!--CONF TAGS -->
+
+{%if tag.slug%}
+
+<style type="text/css">
+{%for trend in trend %}
+.engelSpan{{trend.slug}}{
+background: {{trend.tag.section.color}} url(/media/{{trend.photo}}) no-repeat center center!important;
+background-size: 80% 80%!important;
+border: 4px solid rgba(255,255,255,0.3)!important;
+}
+{%endfor%}
+
+    {% for section in section %}
+#engelBless{{section.slug}}{
+background: rgba(0,0,0,0.5) url(/media/{{section.background}}) no-repeat center center;
+background-size: 100%;
+border-left: 10px solid {{section.color}};
+}
+#engelSpan{{section.slug}}{
+background: {{section.color}} url(/media/{{section.photo}}) no-repeat center center;
+background-size: cover;
+border: 4px solid rgba(255,255,255,0.3);
+}
+{%endfor%}
+
+    .southWing li a{
+    background: {{tag.section.color}} url(/media/{{config.logo}}) no-repeat center 5px;
+    background-size: 33px;
+}
+    .southWing1 li a{
+    background: {{tag.section.color}} url(/media/{{config.logo}}) no-repeat center 5px;
+    background-size: 33px;
+}
+
+.heavenSouth, .heavenSouth1, .searchWing, .sayayingWing {
+    background: {{tag.section.color}};
+}
+.godTopBar {
+    width: 100%;
+    height: 50px;
+    background: {{tag.section.color}} url(/static/img/icons/close.png)no-repeat center center;
+        background-size: auto 80%;
+}
+
+    #eye{{article.id}}{
+    background: rgba(255,255,255,0.1) url(/media/{{tag.photo}})no-repeat center center;
+    background-size: cover;
+    }
+
+    .sun{
+    background: rgba(255,255,255,0.1) url(/media/{{tag.background}}) no-repeat center center;
+    background-size: cover;
+    }
+    .sun1{
+    background: rgba(255,255,255,0.1) url(/media/{{tag.background}}) no-repeat center center;
+    background-size: cover;
+    }
+</style>
+
+{%endif%}
+
+<!--CONF PRINCIPAL -->
+
+{%if not section.slug and not article.slug and not tag.slug and not trend.slug and not category.slug and not profile.slug and not userprofile.slug%}
+
+    <style type="text/css">
+
+    {% for section in section %}
+#engelBless{{section.slug}}{
+background: rgba(0,0,0,0.5) url(/media/{{section.background}}) no-repeat center center;
+background-size: 100%;
+border-left: 10px solid {{section.color}};
+}
+#engelSpan{{section.slug}}{
+background: {{section.color}} url(/media/{{section.photo}}) no-repeat center center;
+background-size: cover;
+border: 4px solid rgba(255,255,255,0.3);
+}
+{%endfor%}
+
+        .southWing li a{
+        background: {{config.color}} url(/media/{{config.logo}}) no-repeat center 5px;
+        background-size: 33px;
+    }
+        .southWing1 li a{
+        background: {{config.color}} url(/media/{{config.logo}}) no-repeat center 5px;
+        background-size: 33px;
+    }
+    .heavenSouth{
+        background: {{config.color}};
+    }
+    .heavenSouth1{
+        background: {{config.color}};
+    }
+    .godTopBar {
+        width: 100%;
+        height: 50px;
+        background: {{config.color}} url(/static/img/icons/close.png)no-repeat center center;
+        background-size: auto 80%;
+    }
+
+    .searchWing {
+        background: {{config.color}};
+    }
+    .sayayingWing {
+        background: {{config.color}};
+    }
+        
+        #eye{{config.id}}{
+        background: {{config.color}} url(/media/{{config.logo}})no-repeat center center;
+        background-size: cover;
+        border: 4px solid rgba(255,255,255,0.3);
+        }
+
+        .sun{
+        background: rgba(255,255,255,0.1) url(/media/{{config.background}}) no-repeat center center;
+        background-size: cover;
+        background-attachment: fixed;
+        }
+        .sun1{
+        background: rgba(255,255,255,0.1) url(/media/{{config.background}}) no-repeat center center;
+        background-size: cover;
+        background-attachment: fixed;
+        }
+        .sun2{
+        background: rgba(255,255,255,0.1) url(/media/{{config.sectionBackground}}) no-repeat center center;
+        background-size: cover;
+        background-attachment: fixed;
+        }
+        .sun3{
+        background: rgba(255,255,255,0.1) url(/media/{{config.categoryBackground}}) no-repeat center center;
+        background-size: cover;
+        background-attachment: fixed;
+        }
+                .sun01{
+        background: rgba(255,255,255,0.1) url(/media/{{config.background}}) no-repeat center center;
+        background-size: cover;
+        background-attachment: fixed;
+        }
+        .sun02{
+        background: rgba(255,255,255,0.1) url(/media/{{config.sectionBackground}}) no-repeat center center;
+        background-size: cover;
+        background-attachment: fixed;
+        }
+        .sun03{
+        background: rgba(255,255,255,0.1) url(/media/{{config.categoryBackground}}) no-repeat center center;
+        background-size: cover;
+        background-attachment: fixed;
+        }
+
+        #sun1{
+             background: rgba(255,255,255,0.1) url(/media/{{config.background}}) no-repeat center center;
+        background-size: cover;
+        width: 120px;
+        height: 120px;
+        display: inline-block;
+        opacity: 0.8;
+        }
+
+        #sun2{
+             background: rgba(255,255,255,0.1) url(/media/{{config.sectionBackground}}) no-repeat center center;
+        background-size: cover;
+        width: 120px;
+        height: 120px;
+        display: inline-block;
+        opacity: 0.8;
+        }
+        #sun3{
+            background: rgba(255,255,255,0.1) url(/media/{{config.categoryBackground}}) no-repeat center center;
+        background-size: cover;
+        width: 120px;
+        height: 120px;
+        display: inline-block;
+        opacity: 0.8;
+        }
+        #sun1:hover{
+            opacity: 1;
+        }
+         #sun2:hover{
+            opacity: 1;
+        }
+         #sun3:hover{
+            opacity: 1;
+        }
+    </style>
+
+    <script type="text/javascript">
+        setInterval(slider01, 8000);
+    </script>
+
+{% endif %}
+
+
+
+    {% endfor %}

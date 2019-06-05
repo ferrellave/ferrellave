@@ -1,0 +1,70 @@
+{% extends 'blog/base_blog.html' %}
+
+{% block title %}{% for config in config %}{{config.webName}}{% endfor %}{% endblock title %}
+
+{% block blog_content %}
+
+    <!--CONFIG -->
+     {% include 'blog/modules/_config.html' %}
+
+    <!--/////////////////BARRAS DE MENUS -->
+
+    {% include 'blog/modules/_menubars.html'%}
+
+<!--//////////////////CONTENEDOR PRINCIPAL -->
+    <section class="universe1" id="universe">
+
+        <!--CONTENEDOR PRINCIPAL IZQUIERDO (PORTADA) -->
+        <section class="sun1" id="sun">
+            <section class="space">
+                {% include 'blog/modules/_sun.html' %}
+            </section>   
+        </section>
+        {% include 'blog/modules/_release.html' %}
+        <!--
+        CONTENEDOR PRINCIPAL DERECHO  (CONTENIDO) 
+        --><section class="moon1" id="moon">
+            <!--CONTENEDOR PRINCIPAL DERECHO  (LISTA DE ARTICULOS Y PERFILES) -->
+            <section class="menguante" id="menguante">
+                      <!--MENU TOP -->
+        <nav class="heavenNorth1" id="heavenNorth">
+            <div class="northWing1" id="northWing">
+            {% include 'blog/modules/_heavenNorth.html' %}
+            </div>
+        </nav>
+                <section id="sideB" class="sideB">
+                    {% include 'blog/modules/_articlesList.html' %}
+
+                </section>
+
+                
+                {% for section in section %}
+                    <section id="{{section.slug}}" class="category{{section.id}}">
+                    {% include 'blog/modules/_categoryProfilesList.html' %}
+                    </section>
+                {% endfor %}
+            </section>
+
+
+<section class="profile-list">
+                      {% for userprofile in userprofile%}
+                        {%if userprofile.photo%}
+                        {% include 'blog/modules/_profiles.html'%}
+                        {%endif%}
+                        {%endfor%}
+                </section>
+   
+{% include 'blog/modules/_footer.html' %}
+            
+        </section>
+    </section>
+
+        <!--SLIDE MENU PRINCIPAL EXPLORAR -->
+    <section class="gog" id="gog">
+        {% include 'blog/modules/_gog.html'%}
+        <!--SLIDE MENU PRINCIPAL EXPLORAR -->
+    <section class="gog" id="gog">
+        {% include 'blog/modules/_gog.html'%}
+    </section>    </section>
+
+{% endblock blog_content %}

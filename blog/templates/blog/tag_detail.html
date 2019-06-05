@@ -1,0 +1,53 @@
+{% extends 'blog/base_blog.html' %}
+
+{% block title %}{% for config in config %}{{config.webName}}{%endfor%} {% for tag in tag %}
+{% if tag.slug == link.slug %}{{tag.name}}{%endif%}{%endfor%}{% endblock title %}
+
+{% block blog_content %}
+
+{% for tag in tag %}
+{% if tag.slug == link.slug %}
+
+    <!--CONFIG -->
+     {% include 'blog/modules/_config.html' %}
+
+    <!--/////////////////BARRAS DE MENUS -->
+
+    {% include 'blog/modules/_menubars.html'%}
+
+<!--//////////////////CONTENEDOR PRINCIPAL -->
+    <section class="universe" id="universe">
+
+        <!--CONTENEDOR PRINCIPAL IZQUIERDO (PORTADA) -->
+        <section class="sun" id="sun">
+            <section class="space">
+                {% include 'blog/modules/_sun.html' %}
+            </section>   
+        </section><!--
+        CONTENEDOR PRINCIPAL DERECHO  (CONTENIDO) 
+        --><section class="moon" id="moon">
+           
+            <!--CONTENEDOR PRINCIPAL DERECHO  (LISTA DE ARTICULOS Y PERFILES) -->
+            <section class="menguante" id="menguante">
+                <section id="sideB" class="sideB">
+                    {% include 'blog/modules/_articlesList.html' %}
+                </section>
+                {% for profile in profile %}
+                    <section id="{{profile.slug}}" class="category{{profile.id}}">
+                    {% include 'blog/modules/_categoryProfilesList.html' %}
+                    </section>
+                {% endfor %}
+            </section>
+        </section>
+    </section>
+
+
+{% endif %}
+{% endfor %}
+
+    <!--SLIDE MENU PRINCIPAL EXPLORAR -->
+    <section class="gog" id="gog">
+        {% include 'blog/modules/_gog.html'%}
+    </section>
+
+{% endblock blog_content %}

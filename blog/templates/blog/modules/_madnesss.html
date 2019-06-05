@@ -1,0 +1,250 @@
+{%for config in config %}
+<section class="gogHtml">
+<section id="sideA" class="sideA">
+	
+	<section class="dino" id="dino00">
+
+                
+                {%if userprofile.body%}
+                <p class="sideAB">{{userprofile.body|safe}}</p>
+                {%else%}
+                <p class="sideAB">{{userprofile.profile.body|safe}}</p>
+                {%endif%}            
+ </section>
+
+<section class="dino" id="dino10">
+<h6>multimedia 10</h6>
+</section>
+
+
+<section class="dino" id="dino01">
+
+<img src="/media/{{userprofile.background}}">
+</br>
+<img src="/media/{{userprofile.photo}}">
+</section>
+
+<section class="dino" id="dino02">
+	<section class="names"><article class="planet">
+                                        <div class="orbit">
+                                            <div class="air">
+                                                <span class="hare"></span>
+                                            </div><div class="earth">
+                                                <div class="wood wood01">
+                                                    <h3>{%if config.dino02%}{{config.dino02}}{%else%}Audio{%endif%}</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                </article></section>
+<article class="planet">
+                                    <div class="orbit">
+                                        <div class="air">
+                                            <span class="hare" id="mediaCategoryA{{media.mediaCategory.id}}"></span>
+                                        </div><div class="earth">
+                                            <div class="wood wood01">
+                                                <audio controls>
+                                              <source src="/media/{{userprofile.audio}}" type="audio/mpeg">
+                                            Your browser does not support the audio element.
+                                            </audio>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+</section>
+
+<section class="dino" id="dino03">
+	<section class="names"><article class="planet">
+                                        <div class="orbit">
+                                            <div class="air">
+                                                <span class="hare"></span>
+                                            </div><div class="earth">
+                                                <div class="wood wood01">
+                                                    <h3>{%if config.dino03%}{{config.dino03}}{%else%}メディア{%endif%}</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                </article></section>
+{{userprofile.youtube|safe}}
+</section>
+
+<section class="dino" id="dino04">
+	<section class="names"><article class="planet">
+                                        <div class="orbit">
+                                            <div class="air">
+                                                <span class="hare"></span>
+                                            </div><div class="earth">
+                                                <div class="wood wood01">
+                                                    <h3>{%if config.dino04%}{{config.dino04}}{%else%}Descarga{%endif%}</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                </article></section>
+{% if userprofile.archive %}
+
+                            {% if userprofile.extension_class == ".jpg" %}
+                                <img src="/media/{{userprofile.archive}}">
+                            {% endif %}
+
+                            {% if userprofile.extension_class == ".mp3" %}
+                                <article class="planet">
+                                    <div class="orbit">
+                                        <div class="air">
+                                            <span class="hare" id="mediaCategoryA{{media.mediaCategory.id}}"></span>
+                                        </div><div class="earth">
+                                            <div class="wood wood01">
+                                                <audio controls>
+                                              <source src="/media/{{userprofile.archive}}" type="audio/mpeg">
+                                            Your browser does not support the audio element.
+                                            </audio>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+                            {% endif %}
+
+                            {% if userprofile.extension_class == ".mp4" %}
+                                <video width="320" height="240" controls>
+                                    <source src="/media/{{userprofile.archive}}" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>   
+                            {% endif %}
+
+                            {% if userprofile.extension_class == ".pdf" %}
+                                <a href="/media/{{userprofile.archive}}" target="_blank"><article class="planet">
+                                    <div class="orbit">
+                                        <div class="air">
+                                            <span class="hare" id="mediaCategoryA{{article.mediaCategory.id}}"></span>
+                                        </div><div class="earth">
+                                            <div class="wood wood01">
+                                                <h4><p><strong>{%if config.dino04%}{{config.dino04}}{%else%}Descarga{%endif%}</strong>{{userprofile.extension_class}}</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article></a>
+                                <embed src="/media/{{userprofile.archive}}" width="100%" height="auto" alt="pdf" pluginspage="http://www.adobe.com/products/acrobat/readstep2.html">
+                            {% endif %}
+
+                                <a href="/media/{{userprofile.archive}}" target="_blank"><article class="planet">
+                                    <div class="orbit">
+                                        <div class="air">
+                                            <span class="hare" id="mediaCategoryA{{media.mediaCategory.id}}"></span>
+                                        </div><div class="earth">
+                                            <div class="wood wood01">
+                                                <h4><p><strong>{%if config.dino04%}{{config.dino04}}{%else%}Descarga{%endif%}</strong>{{userprofile.extension_class}}</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article></a>
+                        {% endif %}
+</section>
+
+<section class="dino" id="dino05">
+	<section class="names"><article class="planet">
+                                        <div class="orbit">
+                                            <div class="air">
+                                                <span class="hare"></span>
+                                            </div><div class="earth">
+                                                <div class="wood wood01">
+                                                    <h3>{%if config.dino05%}{{config.dino05}}{%else%}場所{%endif%}</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                </article></section>
+{{userprofile.mapa|safe}}
+</section>
+
+<section class="dino" id="dino06">
+	<section class="names"><article class="planet">
+                                        <div class="orbit">
+                                            <div class="air">
+                                                <span class="hare"></span>
+                                            </div><div class="earth">
+                                                <div class="wood wood01">
+                                                    <h3>{%if config.dino06%}{{config.dino06}}{%else%}ライブ{%endif%}</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                </article></section>
+{{userprofile.live|safe}}
+</section>
+
+<section class="dino" id="dino07">
+	<section class="names"><article class="planet">
+                                        <div class="orbit">
+                                            <div class="air">
+                                                <span class="hare"></span>
+                                            </div><div class="earth">
+                                                <div class="wood wood01">
+                                                    <h3>{%if config.dino07%}{{config.dino07}}{%else%}Evento{%endif%}</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                </article></section>
+
+                            <a href="#"><article class="planet">
+                                <div class="orbit">
+                                    <div class="air">
+                                        <span class="hare" id="mediaCategoryA{{media.mediaCategory.id}}"></span>
+                                    </div><div class="earth">
+                                        <div class="wood wood01">
+                                            <h3>Inicia el {{userprofile.start}}</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article></a>
+
+
+                        {% if userprofile.finish %}
+                            <a href="#"><article class="planet">
+                                <div class="orbit">
+                                    <div class="air">
+                                        <span class="hare" id="mediaCategoryA{{media.mediaCategory.id}}"></span>
+                                    </div><div class="earth">
+                                        <div class="wood wood01">
+                                            <h3>Finaliza el {{userprofile.finish}}</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article></a>
+                        {% endif %}
+</section>
+
+<section class="dino0" id="dino08">
+	<section class="names"><article class="planet">
+                                        <div class="orbit">
+                                            <div class="air">
+                                                <span class="hare"></span>
+                                            </div><div class="earth">
+                                                <div class="wood wood01">
+                                                    <h3>{%if config.dino08%}{{config.dino08}}{%else%}{{userprofile.name}} en {{config.webName}}{%endif%}</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                </article></section>
+{% for article in article%}
+{%if article.owner.userprofile.id == userprofile.id%}
+{% include 'blog/modules/_articles.html'%}
+{%endif%}
+{%endfor%}
+</section>
+
+<section class="dino" id="dino09">
+	<section class="names"><article class="planet">
+                                        <div class="orbit">
+                                            <div class="air">
+                                                <span class="hare"></span>
+                                            </div><div class="earth">
+                                                <div class="wood wood01">
+                                                    <h3>{%if config.dino09%}{{config.dino09}}{%else%}もっと ...{%endif%}</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                </article></section>
+{{userprofile.multimedia|safe}}
+</section>
+
+
+</section> 
+</section> 
+
+{%endfor%}

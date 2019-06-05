@@ -1,0 +1,92 @@
+                    <div class="gogHand">
+                        <div class="gogLeft">
+
+                                <div class="godHead">
+                                <!--    <a href="#" onclick="gog()"><div class="godTopBar">
+                                    </div></a> -->
+
+
+                                    <section class="menu-movil">
+<li><a href="/">{{config.webName}}</a></li>
+                                        {%if config.text03%}
+<li class="mapWing"><a  onclick="world()"><span></span>{{config.text03}}</a></li>
+{%endif%}
+
+{%for profile in profile%}
+{%if profile.background%}
+        <li><a href="{% url 'blog.profile_detail' profile.slug %}"><span class="profile-{{profile.id}}"></span>{{profile.name}}</a></li>
+         <style type="text/css">
+            .profile-{{profile.id}}{
+            background: url(/media/{{profile.photo}})no-repeat center center!important;
+            background-size: 20px!important;
+            }
+        </style>
+        {%endif%}
+        {% endfor %}
+{%for section in section%}
+{%if section.background%}
+        <li><a href="{% url 'blog.section_detail' section.slug %}"><span class="section-{{section.id}}"></span>{{section.name}}</a></li>
+         <style type="text/css">
+            .section-{{section.id}}{
+            background: url(/media/{{section.photo}})no-repeat center center!important;
+            background-size: 20px!important;
+            }
+        </style>
+        {%endif%}
+        {% endfor %}
+
+        {%for page in page%}
+        <li><a href="{% url 'blog.page_detail' page.slug %}"><span class="page-{{page.id}}"></span>{{page.name}}</a></li>
+         <style type="text/css">
+            .page-{{page.id}}{
+            background: url(/media/{{page.photo}})no-repeat center center!important;
+            background-size: 20px!important;
+            }
+        </style>
+        {% endfor %}
+
+        <li><a href="{% url 'blog.contact'%}"><span class="contact-link"></span>Contacto</a></li>
+         <style type="text/css">
+            .contact-link{
+            background: url(/static/img/icons/112.png)no-repeat center center!important;
+            background-size: 20px!important;
+            }
+        </style>
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'accounts.logout' %}"><span class="logout-link"></span>Cerrar sesión</a></li>   
+        <style type="text/css">
+            .logout-link{
+            background: url(/static/img/icons/72.png)no-repeat center center!important;
+            background-size: 20px!important;
+            }
+        </style> 
+        {%endif%}
+                                    </section>
+                                    
+                                    {% for userprofile in userprofile %}
+                                    {% if userprofile.background %}
+
+                                    <a href="{% url 'blog.userprofile_detail' userprofile.slug %}"><article class="engelBless" id="engelBless{{userprofile.id}}">
+                                    <div class="space">
+                                        <li class="engel"><p><span id="engelSpan{{userprofile.id}}"></span>{{userprofile.name}}</p></li>
+                                    </div>
+                                    </article></a>
+
+                                    <style type="text/css">
+                                        #engelBless{{userprofile.id}}{
+                                    background: rgba(0,0,0,0.5) url(/media/{{userprofile.background}}) no-repeat center center;
+                                    background-size: 200%;
+                                    border-left: 10px solid {{userprofile.color01}};
+                                    }
+                                    #engelSpan{{userprofile.id}}{
+                                    background: {{section.color01}} url(/media/{{userprofile.photo}}) no-repeat center center;
+                                    background-size: cover;
+                                    border: 4px solid rgba(255,255,255,0.3);
+                                    }
+
+                                    </style>
+                                    {%endif%}
+                                    {% endfor %}
+
+                                </div>
+                    </div>

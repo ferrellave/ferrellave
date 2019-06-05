@@ -1,0 +1,122 @@
+{%for config in config%}
+
+{%if not article.slug and not userprofile.slug and not profile.slug%}
+  {% for section in section %}
+                <li><a href="#{{section.slug}}" onclick="category{{section.id}}()"><span id="spanCategory{{section.id}}"></span>{{section.name}}</a></li>
+
+                {%if section.photo%}
+                <style type="text/css">
+                    #spanCategory{{section.id}}{
+                        background: url(/media/{{section.photo}}) no-repeat center center;
+                        background-size: 90%;
+                        margin-right: 5px;
+                        margin-left: 5px;
+                        border-radius: 50%;
+                    }
+                </style>
+                {%endif%}
+        {% endfor %}
+{%endif%}
+
+{% if article.slug%}
+<!--<li><a href="#" onclick="dino10()"><span></span>Info</a></li>-->
+
+{% if article.background %}
+<li><a href="#dino01"onclick="dino01()"><span class="dinos01"></span>{%if config.dino01%}{{config.dino01}}{%else%}Pic{%endif%}</a></li>
+{%endif%}
+{% if article.audio %}
+<li><a href="#dino02" onclick="dino02()"><span class="dinos02"></span>{%if config.dino02%}{{config.dino02}}{%else%}Audio{%endif%}</a></li>
+{%endif%}
+{% if article.youtube %}
+<li><a href="#dino03" onclick="dino03()"><span class="dinos03"></span>{%if config.dino03%}{{config.dino03}}{%else%}メディア{%endif%}</a></li>
+{%endif%}
+{% if article.archive %}
+<li><a href="#dino04" onclick="dino04()"><span class="dinos04"></span>{%if config.dino04%}{{config.dino04}}{%else%}Descarga{%endif%}</a></li>
+{%endif%}
+{% if article.mapa %}
+<li><a href="#dino05" onclick="dino05()"><span class="dinos05"></span>{%if config.dino05%}{{config.dino05}}{%else%}場所{%endif%}</a></li>
+{%endif%}
+{% if article.live %}
+<li><a href="#dino06" onclick="dino06()"><span class="dinos06"></span>{%if config.dino06%}{{config.dino06}}{%else%}ライブ{%endif%}</a></li>
+{%endif%}
+{% if article.start %}
+<li><a href="#dino07" onclick="dino07()"><span class="dinos07"></span>{%if config.dino07%}{{config.dino07}}{%else%}Evento{%endif%}</a></li>
+{%endif%}
+
+{% if article.body %}
+<li><a href="#dino00" onclick="dino00()"><span class="dinos00"></span>{%if config.dino00%}{{config.dino00}}{%else%}本文{%endif%}</a></li>
+{%endif%}
+
+{% if article.multimedia %}
+<li><a href="#dino09" onclick="dino09()"><span class="dinos09"></span>{%if config.dino09%}{{config.dino09}}{%else%}もっと ...{%endif%}</a></li>
+{%endif%}
+
+<li><a href="#dino08" onclick="dino08()"><span class="dinos08"></span>{%if config.dino08%}{{config.dino08}}{%else%}Debate{%endif%}</a></li>
+
+<!--
+<li><a href="#dino08" onclick="dino08()"><span class="dinos08"></span>コメント</a></li>
+-->
+        <!--
+        {% for mediaCategory in mediaCategory %}
+            <style type="text/css">
+                    #mediaCategory{{mediaCategory.id}}{
+                        background: url(/media/{{mediaCategory.photo}})no-repeat center center;
+                        background-size: 77% 77%;
+                    }
+                </style>
+
+                <li><a href="#cat{{mediaCategory.id}}" onclick="media{{mediaCategory.id}}()"><span id="mediaCategory{{mediaCategory.id}}"></span>{{mediaCategory.name}}</a></li>
+        {% endfor %}
+        -->
+{%endif%}
+
+{% if userprofile.slug%}
+<!--<li><a href="#" onclick="dino10()"><span></span>Info</a></li>-->
+{% if userprofile.background %}
+<li><a href="#dino01"onclick="dino01()"><span class="dinos01"></span>{%if config.dino01%}{{config.dino01}}{%else%}Pic{%endif%}</a></li>
+{%endif%}
+{% if userprofile.audio %}
+<li><a href="#dino02" onclick="dino02()"><span class="dinos02"></span>{%if config.dino02%}{{config.dino02}}{%else%}Audio{%endif%}</a></li>
+{%endif%}
+{% if userprofile.youtube %}
+<li><a href="#dino03" onclick="dino03()"><span class="dinos03"></span>{%if config.dino03%}{{config.dino03}}{%else%}メディア{%endif%}</a></li>
+{%endif%}
+{% if userprofile.archive %}
+<li><a href="#dino04" onclick="dino04()"><span class="dinos04"></span>{%if config.dino04%}{{config.dino04}}{%else%}Descarga{%endif%}</a></li>
+{%endif%}
+{% if userprofile.mapa %}
+<li><a href="#dino05" onclick="dino05()"><span class="dinos05"></span>{%if config.dino05%}{{config.dino05}}{%else%}場所{%endif%}</a></li>
+{%endif%}
+{% if userprofile.live %}
+<li><a href="#dino06" onclick="dino06()"><span class="dinos06"></span>{%if config.dino06%}{{config.dino06}}{%else%}ライブ{%endif%}</a></li>
+{%endif%}
+{% if userprofile.start %}
+<li><a href="#dino07" onclick="dino07()"><span class="dinos07"></span>{%if config.dino07%}{{config.dino07}}{%else%}Evento{%endif%}</a></li>
+{%endif%}
+
+<li><a href="#dino08" onclick="dino08()"><span class="dinos08"></span>{%if config.dino08%}{{config.dino08}}{%else%}コメント{%endif%}</a></li>
+
+{% if userprofile.body %}
+<li><a href="#dino00" onclick="dino00()"><span class="dinos00"></span>{%if config.dino00%}{{config.dino00}}{%else%}本文{%endif%}</a></li>
+{%endif%}
+
+{% if userprofile.multimedia %}
+<li><a href="#dino09" onclick="dino09()"><span class="dinos09"></span>{%if config.dino09%}{{config.dino09}}{%else%}もっと ...{%endif%}</a></li>
+{%endif%}
+
+<!--
+
+        {% for mediaCategory in mediaCategory %}
+            <style type="text/css">
+                    #mediaCategory{{mediaCategory.id}}{
+                        background: url(/media/{{mediaCategory.photo}})no-repeat center center;
+                        background-size: 77% 77%;
+                    }
+                </style>
+
+                <li><a href="#cat{{mediaCategory.id}}" onclick="media{{mediaCategory.id}}()"><span id="mediaCategory{{mediaCategory.id}}"></span>{{mediaCategory.name}}</a></li>
+        {% endfor %}
+ -->       
+{%endif%}
+
+{%endfor%}

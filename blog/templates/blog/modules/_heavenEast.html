@@ -1,0 +1,123 @@
+{%for config in config%}
+{%if config.text01%}
+<li class="searchWing"><a onclick="gog()"><span></span>{{config.text01}}</a></li>
+{%endif%}
+{%if config.text03%}
+<li class="mapWing"><a  onclick="world()"><span></span>{{config.text03}}</a></li>
+{%endif%}
+
+{%for profile in profile%}
+{%if profile.background%}
+        <li><a href="{% url 'blog.profile_detail' profile.slug %}"><span class="profile-{{profile.id}}"></span>{{profile.name}}</a></li>
+         <style type="text/css">
+            .profile-{{profile.id}}{
+            background: url(/media/{{profile.photo}})no-repeat center center!important;
+            background-size: 20px!important;
+            }
+        </style>
+        {%endif%}
+        {% endfor %}
+{%for section in section%}
+{%if section.background%}
+        <li><a href="{% url 'blog.section_detail' section.slug %}"><span class="section-{{section.id}}"></span>{{section.name}}</a></li>
+         <style type="text/css">
+            .section-{{section.id}}{
+            background: url(/media/{{section.photo}})no-repeat center center!important;
+            background-size: 20px!important;
+            }
+        </style>
+        {%endif%}
+        {% endfor %}
+
+        {%for page in page%}
+        <li><a href="{% url 'blog.page_detail' page.slug %}"><span class="page-{{page.id}}"></span>{{page.name}}</a></li>
+         <style type="text/css">
+            .page-{{page.id}}{
+            background: url(/media/{{page.photo}})no-repeat center center!important;
+            background-size: 20px!important;
+            }
+        </style>
+        {% endfor %}
+
+        <li><a href="{% url 'blog.contact'%}"><span class="contact-link"></span>Contacto</a></li>
+         <style type="text/css">
+            .contact-link{
+            background: url(/static/img/icons/112.png)no-repeat center center!important;
+            background-size: 20px!important;
+            }
+        </style>
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'accounts.logout' %}"><span class="logout-link"></span>Cerrar sesión</a></li>   
+        <style type="text/css">
+            .logout-link{
+            background: url(/static/img/icons/72.png)no-repeat center center!important;
+            background-size: 20px!important;
+            }
+        </style> 
+        {%endif%}
+        {% for category in category %}
+
+        <style type="text/css">
+            #spanCategory{{category.id}}{
+                background: url(/media/{{category.photo}})no-repeat center center;
+                background-size: 60%;
+            }
+        </style>
+
+        <li><a href="#category{{category.id}}" onclick="category{{category.id}}()"><span id="spanCategory{{category.id}}"></span>{{category.name}}</a></li>
+        {% endfor %}
+
+        <section class="culture">
+
+         <div class="shareB">
+               {{config.color04|safe}}
+            </div>
+
+            <div class="forPeople">
+                {%for red in red%}
+                <a href="{{red.url}}" target="_blank"><span class="red{{red.id}}"></span>{{red.name|safe}}</a>
+
+                {% if red.photo%}
+                <style type="text/css">
+                .red{{red.id}}{
+                    width: 20px;
+                    height: 20px;
+                    display: inline-block;
+                    vertical-align: middle;
+                    margin-right: 3px;
+                    background: url(/media/{{red.photo}}) no-repeat center center;
+                    background-size: 100% 100%;
+                }
+                </style>
+                {%endif%}
+                {%endfor%}
+            </div>
+
+        </section>
+<a href="/" class="actionHome">{{config.webName}}</a>
+<style type="text/css">
+    .actionHome{
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding-top: 12px;
+    padding-left: 45px;
+    padding-right: 12px;
+    height: 50px;
+    color: #fff;
+    font-family: oswald;
+    font-size: 16px;
+    opacity: 0.8;
+    background: url(/media/{{config.logo}}) no-repeat center left 5px!important;
+    background-size: 35px!important;
+}
+</style>
+<a  {% if user.is_authenticated %}
+
+            href="{% url 'blog.contact' %}"
+            {% else %}
+
+            href="{% url 'blog.contact' %}"
+
+            {% endif %} class="actionLogin">{{config.text02}}</a>
+{%endfor%}

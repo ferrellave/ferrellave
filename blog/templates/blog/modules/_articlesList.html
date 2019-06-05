@@ -1,0 +1,57 @@
+<!--
+                <section class="names">        
+                                    <article class="planet">
+                                    <div class="orbit">
+                                        <div class="air">
+                                            <span class="hare"></span>
+                                        </div><div class="earth">
+                                            <div class="wood wood01">
+                                                <h3>{%for config in config%}{%if config.text06%}{{config.text06}}{%else%}{{config.webName}}{%endif%}{%endfor%}</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </article>
+                </section>
+  -->  
+    {% if not profile.slug%}
+
+{% for article in article %}
+
+                {%if section.slug%}
+    {%if section.id == article.section.id%}
+        {% include 'blog/modules/_articles.html'%}
+    {%endif%}
+    {%endif%}
+
+    {%if tag.slug%}
+    {%if tag.id == article.tag.id%}
+        {% include 'blog/modules/_articles.html'%}
+    {%endif%}
+    {%endif%}
+
+    {%if trend.slug%}
+    {%if trend.id == article.trend.id%}
+        {% include 'blog/modules/_articles.html'%}
+    {%endif%}
+    {%endif%}
+
+    {%if not section.slug and not tag.slug and not profile.slug and not trend.slug %}
+        {% include 'blog/modules/_articles.html'%}
+    {%endif%}
+
+{%endfor%}
+
+{%else%}
+
+    {%if profile.slug%}
+    {% for userprofile in userprofile%}
+        {%if profile.id == userprofile.profile.id%}
+        {% include 'blog/modules/_profiles.html'%}
+        {%endif%}
+    {%endfor%}
+    {%endif%}
+
+{%endif%}
+
+                {% include 'blog/modules/_paginator.html'%}
+                  

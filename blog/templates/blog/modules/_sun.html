@@ -1,0 +1,123 @@
+{% if article.slug %}
+    <section class="face">
+      <!--      <div class="eye" id="eye{{article.id}}">
+            </div> -->
+
+             <div class="avatarInfo">
+            {%if article.owner.userprofile.slug%}
+            <a href="{% url 'blog.userprofile_detail' article.owner.userprofile.slug %}"><span id="userAvatar"class="userAvatar" id="{{article.owner.userprofile.id}}"></span><h2>{{article.owner.userprofile.name}}</h2></a>
+            {%else%}
+            <h2>{{article.owner.userprofile.name}}</h2>
+            {%endif%}
+            </div>
+        </br></br>
+            <h1>{{article.title}}</h1>
+            </br></br></br></br>
+            </br></br></br></br>
+           
+        
+
+{%if article.owner.userprofile.photo %}
+<style type="text/css">
+.userAvatar{
+    background: rgba(0,0,0,0.5) url(/media/{{article.owner.userprofile.photo}}) no-repeat center center;
+background-size: 100%;
+}
+</style>
+{%endif%}
+
+    </section>
+{%endif%}
+{% if section.slug %}
+        <section class="face">
+                <div class="eye" id="eye{{article.id}}">
+                </div>
+                <h1>{{section.name}}</h1>
+                <h2>{{section.body|safe}}</h2>
+       <!--          <div class="shareB">
+                <a href="https://twitter.com/share" class="twitter-share-button" data-via="qlturasur" data-size="large">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+            </div> -->
+            </section>
+{% endif %}
+{% if profile.slug %}
+        <section class="face">
+                <div class="eye" id="eye{{article.id}}">
+                </div>
+                <h1>{{profile.name}}</h1>
+                <h2>{{profile.body|safe}}</h2>
+     <!--           <div class="shareB">
+                <a href="https://twitter.com/share" class="twitter-share-button" data-via="qlturasur" data-size="large">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+            </div> -->
+            </section>
+{% endif %}
+{% if tag.slug %}
+        <section class="face">
+                <div class="eye" id="eye{{article.id}}">
+                </div>
+                <h1>{{tag.name}}</h1>
+                <h2>{{tag.body|safe}}</h2>
+        <!--        <div class="shareB">
+                <a href="https://twitter.com/share" class="twitter-share-button" data-via="qlturasur" data-size="large">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+            </div> -->
+            </section>
+{% endif %}
+{% if trend.slug %}
+        <section class="face">
+                <div class="eye" id="eye{{article.id}}">
+                </div>
+                <h1>{{trend.name}}</h1>
+                <h2>{{trend.body}}</h2>
+      <!--          <div class="shareB">
+                <a href="https://twitter.com/share" class="twitter-share-button" data-via="qlturasur" data-size="large">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+            </div> -->
+            </section>
+{% endif %}
+
+{% if userprofile.slug %}
+        <section class="face">
+                <div class="eye" id="eye{{article.id}}">
+                </div>
+                {% if userprofile.name %}
+                <h1>{{userprofile.name}}</h1>
+                {%else%}
+                <h1>{{userprofile.user}}</h1>
+                {%endif%}
+{% if userprofile.slogan %}<h2>{{userprofile.slogan}}</h2>{%endif%}
+        <!--        <div class="shareB">
+                <a href="https://twitter.com/share" class="twitter-share-button" data-via="qlturasur" data-size="large">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+            </div> -->
+            </section>
+{% endif %}
+
+{%if not article.slug and not section.slug and not tag.slug and not trend.slug and not profile.slug and not userprofile.slug %}
+
+{% for config in config %}
+    <section class="face">
+                <div class="eye" id="eye{{config.id}}">
+                </div>
+                <h1>{{config.webName}}</h1>
+                <h2>{{config.description|safe}}</h2>
+                
+                 {% if user.is_authenticated %}
+                <a class="look" href="{% url 'blog.contact' %}">Contacto</a>
+                 {% else %}
+                 <a class="look" href="{% url 'blog.contact' %}">{{config.webSlogan}}</a>
+                 {% endif %}
+            
+             </br></br></br>
+                 <a id="sun1" onclick="slider1()"></a>
+                 <a id="sun2" onclick="slider2()"></a>
+                 <a id="sun3" onclick="slider3()"></a>
+               
+
+    </section>
+{% endfor %}
+
+
+
+{%endif%}

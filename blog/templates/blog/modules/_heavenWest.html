@@ -1,0 +1,264 @@
+{%for config in config%}
+{%if not article.slug %}
+
+{% for article in article %}
+        {% if article.slug == config.categoria %}
+
+        <style type="text/css">
+          {%if article.background %}
+          .heavenWest{
+            background: url(/media/{{article.background}}) no-repeat center center;
+            background-size: auto 100%;
+          }
+          .heavenWest:hover{
+            background: url(/media/{{article.background}}) no-repeat center center;
+            background-size: 100% auto;
+          }
+          .heavenWest1{
+            background: url(/media/{{article.background}}) no-repeat center center;
+            background-size: auto 100%;
+          }
+          .heavenWest1:hover{
+            background: url(/media/{{article.background}}) no-repeat center center;
+            background-size: 100% auto;
+          }
+          {%else%}
+          .heavenWest{
+            background: url(/media/{{article.section.background}}) no-repeat center center;
+            background-size: auto 100%;
+          }
+          .heavenWest:hover{
+            background: url(/media/{{article.section.background}}) no-repeat center center;
+            background-size: 100% auto;
+          }
+          .heavenWest1{
+            background: url(/media/{{article.section.background}}) no-repeat center center;
+            background-size: auto 100%;
+          }
+          .heavenWest1:hover{
+            background: url(/media/{{article.section.background}}) no-repeat center center;
+            background-size: 100% auto;
+          }
+
+          {%endif%}
+        </style>
+
+         <style type="text/css">
+                #wood{{article.slug}} h5 {
+                color: {{article.section.color}};
+                    }
+
+                {% if not article.owner.userprofile.profile.photo %}
+                  .by{{article.id}}{
+                          background: url(/static/img/icons/3.png) no-repeat center center;
+                          background-size: auto 120%;
+                  }
+                {%else%}
+                  .by{{article.id}}{
+                          background: {{article.owner.userprofile.profile.color}} url(/media/{{article.owner.userprofile.profile.photo}}) no-repeat center center;
+                          background-size: auto 120%;
+                  }
+                {%endif%}
+
+                .bySec{{article.id}}{
+                        background: {{article.section.color}} url(/media/{{article.section.photo}}) no-repeat center center!important;
+                        background-size: 90% 90%!important;
+                }
+
+                #byTag{{article.id}}{
+                        background: url(/media/{{article.tag.photo}}) no-repeat center center;
+                        background-size: 90% 90%;
+                }
+
+                #byTrend{{article.id}}{
+                        background: url(/media/{{article.trend.photo}}) no-repeat center center;
+                        background-size: 90% 90%;
+                }
+
+                #byProf{{article.id}}{
+                        background: url(/media/{{article.profile.photo}}) no-repeat center center;
+                        background-size: 90% 90%;
+                }
+                </style>
+      
+<a href="{% url 'blog.article_detail' article.slug %}"><nav class="heavenWest1" id="heavenWest">
+            <div class="westWing">
+                <div class="space">
+        <section class="airplane">
+            <div class="googless">
+                        {% if not article.background %}
+                        <img src="/media/{{article.section.background}}">
+                        {%else%}
+                        <img src="/media/{{article.background}}">
+                        {%endif%}
+                    </div>
+
+ <div class="wood02">
+{% if article.background %}
+<li><span class="dinos01 gold"></span></li>
+{%endif%}                       
+{% if article.audio %}
+<li><span class="dinos02"></span></li>
+{%endif%}
+{% if article.youtube %}
+<li><span class="dinos03"></span></li>
+{%endif%}
+{% if article.archive %}
+<li><span class="dinos04"></span></li>
+{%endif%}
+{% if article.mapa %}
+<li><span class="dinos05"></span></li>
+{%endif%}
+{% if article.live %}
+<li><span class="dinos06"></span></li>
+{%endif%}
+{% if article.start %}
+<li><span class="dinos07"></span></li>
+{%endif%}
+{% if article.body %}
+<li><span class="dinos00"></span></li>
+{%endif%}
+{% if article.multimedia %}
+<li><span class="dinos09"></span></li>
+{%endif%}
+  </div>
+
+             <div class="ks33 wood wood01" id="wood{{article.id}}">
+                <span class="ksna by{{article.id}} googless33"></span><h3>{{article.title}}</h3>
+
+                      <h6> <p>@{{article.owner}}<span></br>{{ article.create_at|timesince }}</span></p></h6>
+
+                   {%if article.section %}<h5 ><span class="bySec{{article.id}} hare"></span>{{article.owner.userprofile.profile}} > {{article.section}}</h5>{%endif%}
+        {%if article.profile %}<h5 >{{article.profile}}</h5>{%endif%}
+                        {%if article.tag %}<h5 >{{article.tag}}</h5>{%endif%}
+                        {%if article.trend %}<h5 >{{article.trend}}</h5>{%endif%}
+             </div>
+        </section><section class="starShip">
+            <p>{{article.body|safe}} </p>
+            {%endif%}
+          {%endfor%}
+        </section>
+        </div></div></nav></a>
+{%endif%}
+{% if article.slug %}  
+
+{% if article.owner.userprofile.slug %}
+<a href="{% url 'blog.userprofile_detail' article.owner.userprofile.slug %}"><nav class="heavenWest1" id="heavenWest">
+{% else%}
+<a href="#"><nav class="heavenWest1" id="heavenWest">
+{%endif%}
+
+            <div class="westWing">
+                <div class="space">
+
+        <section class="airplane">
+            <div class="googless">
+                        {% if article.owner.userprofile.background %}
+                        <img src="/media/{{article.owner.userprofile.background}}">
+                        {%else%}
+                        <img src="/media/{{article.section.background}}">
+                        {%endif%}
+                    </div>
+             <div class="ks33 wood wood01" id="wood{{article.id}}">
+                <span class="ksna by{{article.id}} googless33"></span><h3>
+                @{{article.owner}}
+              </h3>
+
+                      <h6>{{article.title}}</br><p>{{ article.create_at|date:'d F Y' }}<span></br>{{ article.create_at|timesince }}</span></p>{% if not article.owner %}<strong>Adquiere esta experiencia</strong>{%endif%}</h6>
+
+                  {%if article.section %}<h5 ><span class="bySec{{article.id}} hare"></span>{{article.owner.userprofile.profile}} > {{article.section}}</h5>{%endif%}
+        {%if article.profile %}<h5 >{{article.profile}}</h5>{%endif%}
+                        {%if article.tag %}<h5 >{{article.tag}}</h5>{%endif%}
+                        {%if article.trend %}<h5 >{{article.trend}}</h5>{%endif%}
+
+             </div>
+        </section><section class="starShip">
+            {%if article.owner.userprofile.body%}
+            <p>{{article.owner.userprofile.body|safe}} </p>
+            {%else%}
+            <p>{{article.section.body}} </p>
+            {%endif%}
+        </section>
+
+         </div></div></nav></a>
+
+        <style type="text/css">
+           {%if not article.owner.userprofile.background %}
+          .heavenWest{
+            background: url(/media/{{article.owner.userprofile.profile.background}}) no-repeat center center;
+            background-size: auto 100%;
+          }
+          .heavenWest:hover{
+            background: url(/media/{{article.owner.userprofile.profile.background}}) no-repeat center center;
+            background-size: 100% auto;
+          }
+          .heavenWest1{
+            background: url(/media/{{article.owner.userprofile.profile.background}}) no-repeat center center;
+            background-size: auto 100%;
+          }
+          .heavenWest1:hover{
+            background: url(/media/{{article.owner.userprofile.profile.background}}) no-repeat center center;
+            background-size: 100% auto;
+          }
+          {%else%}
+          .heavenWest{
+            background: url(/media/{{article.owner.userprofile.background}}) no-repeat center center;
+            background-size: auto 100%;
+          }
+          .heavenWest:hover{
+            background: url(/media/{{article.owner.userprofile.background}}) no-repeat center center;
+            background-size: 100% auto;
+          }
+          .heavenWest1{
+            background: url(/media/{{article.owner.userprofile.background}}) no-repeat center center;
+            background-size: auto 100%;
+          }
+          .heavenWest1:hover{
+            background: url(/media/{{article.owner.userprofile.background}}) no-repeat center center;
+            background-size: 100% auto;
+          }
+
+          {%endif%}
+        </style>
+
+        <style type="text/css">
+                #wood{{article.id}} h5 {
+                color: {{article.section.color}};
+                    }
+
+                {% if article.owner.userprofile.photo %}
+                  .by{{article.slug}}{
+                          background: {{article.owner.userprofile.profile.color}} url(/media/{{article.owner.userprofile.photo}}) no-repeat center center!important;
+                          background-size: auto 120%;
+                  }
+                {%else%}
+                  .by{{article.id}}{
+                          background: {{article.owner.userprofile.profile.color}} url(/media/{{article.owner.userprofile.profile.photo}}) no-repeat center center!important;
+                          background-size: auto 120%!important;
+                  }
+                {%endif%}
+
+                .bySec{{article.id}}{
+                        background: {{article.section.color}} url(/media/{{article.section.photo}}) no-repeat center center!important;
+                        background-size: 90% 90%!important;
+                }
+
+                #byTag{{article.id}}{
+                        background: url(/media/{{article.tag.photo}}) no-repeat center center;
+                        background-size: 90% 90%;
+                }
+
+                #byTrend{{article.id}}{
+                        background: url(/media/{{article.trend.photo}}) no-repeat center center;
+                        background-size: 90% 90%;
+                }
+
+                #byProf{{article.id}}{
+                        background: url(/media/{{article.profile.photo}}) no-repeat center center;
+                        background-size: 90% 90%;
+                }
+
+                </style>
+
+{%endif%}
+{%endfor%}

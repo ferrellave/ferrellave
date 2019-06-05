@@ -1,0 +1,508 @@
+
+<!--ARTICLE -->
+{%if article.slug%}
+
+            <section id="sideA" class="sideA">
+                <section class="names"><article class="planet">
+                                        <div class="orbit">
+                                            <div class="air">
+                                                <span class="hare"></span>
+                                            </div><div class="earth">
+                                                <div class="wood wood01">
+                                                    <h3>Text</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                </article></section>
+                <p>{{article.body|safe}}</p>            
+            </section>
+
+    {% for mediaCategory in mediaCategory %}
+
+            <script type="text/javascript">
+        function media{{mediaCategory.id}}()
+            {
+                    if(document.getElementById('cat{{mediaCategory.id}}').className == 'cat{{mediaCategory.id}}')
+                    {  
+
+                    {% for media in media %}
+                    document.getElementById('cat{{media.mediaCategory.id}}').className = 'cat{{media.mediaCategory.id}}';
+                    {% endfor %}
+                    document.getElementById('cat{{mediaCategory.id}}').className = 'cat{{mediaCategory.id}}0';
+                    document.getElementById('sideA').className = 'sideA0';
+                    document.getElementById('menguante').className = 'menguante0';
+                    document.getElementById('fullmoon').className = 'fullmoon';
+
+                    } else {
+                        {% for media in media %}
+                    document.getElementById('cat{{media.mediaCategory.id}}').className = 'cat{{media.mediaCategory.id}}';
+                    {% endfor %}
+                    document.getElementById('cat{{mediaCategory.id}}').className = 'cat{{mediaCategory.id}}';
+                    document.getElementById('sideA').className = 'sideA';
+                    document.getElementById('menguante').className = 'menguante0';
+                    document.getElementById('fullmoon').className = 'fullmoon';
+                            }
+            } 
+            </script>
+
+
+            <style type="text/css">
+        .cat{{mediaCategory.id}}{
+            opacity: 0;
+            position: absolute;
+            overflow: hidden;
+            height: 0px;
+            z-index: 0;
+        }
+        .cat{{mediaCategory.id}}0{
+            opacity: 1;
+        }
+
+        .sideA0{
+            display: none;
+        }
+        .fullmoon0{
+            display: none;
+        }
+
+        .sideA h2{
+    background: url(/media/{{article.background}}) no-repeat center center!important;
+    background-size: 100% auto!important;
+    border-radius: 3px;
+    margin: 5px 0;
+    display: block;
+}
+
+        .sideA h4{
+    background: url(/media/{{article.background}}) no-repeat center center!important;
+    background-size: 100% auto!important;
+    border-radius: 3px;
+    margin: 5px 0;
+    display: block;
+}
+
+.sideA h5{
+    background: {{article.section.color}}!important;
+    border-radius: 3px;
+    margin: 5px 0;
+    display: block;
+}
+            </style>
+
+
+        <section class="cat{{mediaCategory.id}}" id="cat{{mediaCategory.id}}">
+        <div class="catOpen">
+
+        {% for media in media %}
+
+        {% if media.mediaCategory.id == mediaCategory.id and media.article.id == article.id %}
+                
+                                    <style type="text/css">
+                                    #mediaCategoryb{{mediaCategory.id}}{
+                                     background: {{article.section.color}} url(/media/{{mediaCategory.photo}})no-repeat center center;
+                                      background-size: 90% 90%;
+                                     }
+                                     #mediaCategoryA{{mediaCategory.id}}{
+                                     background: #B1B1B1 url(/media/{{mediaCategory.photo}})no-repeat center center;
+                                      background-size: 90% 90%;
+                                     }
+                                     </style>
+                        
+
+            <section class="gogHtml">
+
+                    <section class="names">        
+                        <article class="planet">
+                            <div class="orbit">
+                                <div class="air">
+                                    <span class="hare" id="mediaCategoryb{{media.mediaCategory.id}}"></span>
+                                </div><div class="earth">
+                                    <div class="wood wood01">
+                                        <h3>{{media.mediaCategory}}</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </section>
+
+                        {% if media.html %}
+                            {{media.html|safe}}
+                        {% endif %}
+
+                        {% if media.archive %}
+
+                            {% if media.extension_class == ".jpg" %}
+                                <img src="/media/{{media.archive}}">
+                            {% endif %}
+
+                            {% if media.extension_class == ".mp3" %}
+                                <article class="planet">
+                                    <div class="orbit">
+                                        <div class="air">
+                                            <span class="hare" id="mediaCategoryA{{media.mediaCategory.id}}"></span>
+                                        </div><div class="earth">
+                                            <div class="wood wood01">
+                                                <audio controls>
+                                              <source src="/media/{{media.archive}}" type="audio/mpeg">
+                                            Your browser does not support the audio element.
+                                            </audio>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+                            {% endif %}
+
+                            {% if media.extension_class == ".mp4" %}
+                                <video width="320" height="240" controls>
+                                    <source src="/media/{{media.archive}}" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>   
+                            {% endif %}
+
+                            {% if media.extension_class == ".pdf" %}
+                                <a href="/media/{{media.archive}}" target="_blank"><article class="planet">
+                                    <div class="orbit">
+                                        <div class="air">
+                                            <span class="hare" id="mediaCategoryA{{media.mediaCategory.id}}"></span>
+                                        </div><div class="earth">
+                                            <div class="wood wood01">
+                                                <h4><p><strong>Descargar</strong>{{media.extension_class}}</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article></a>
+                                <embed src="/media/{{media.archive}}" width="100%" height="auto" alt="pdf" pluginspage="http://www.adobe.com/products/acrobat/readstep2.html">
+                            {% endif %}
+
+                                <a href="/media/{{media.archive}}" target="_blank"><article class="planet">
+                                    <div class="orbit">
+                                        <div class="air">
+                                            <span class="hare" id="mediaCategoryA{{media.mediaCategory.id}}"></span>
+                                        </div><div class="earth">
+                                            <div class="wood wood01">
+                                                <h4><p><strong>Descargar</strong>{{media.extension_class}}</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article></a>
+                        {% endif %}
+
+                        {% if media.description %}  
+                            <a href="#"><article class="planet">
+                                <div class="orbit">
+                                    <div class="air">
+                                        <span class="hare" id="mediaCategoryA{{media.mediaCategory.id}}"></span>
+                                    </div><div class="earth">
+                                        <div class="wood wood01">
+                                            <h4>{{media.description|safe}}</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article></a>
+                        {% endif %}
+
+                        {% if media.start %}
+                            <a href="#"><article class="planet">
+                                <div class="orbit">
+                                    <div class="air">
+                                        <span class="hare" id="mediaCategoryA{{media.mediaCategory.id}}"></span>
+                                    </div><div class="earth">
+                                        <div class="wood wood01">
+                                            <h3>Comienza el {{media.start}}</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article></a>
+                        {% endif %}
+
+                        {% if media.finish %}
+                            <a href="#"><article class="planet">
+                                <div class="orbit">
+                                    <div class="air">
+                                        <span class="hare" id="mediaCategoryA{{media.mediaCategory.id}}"></span>
+                                    </div><div class="earth">
+                                        <div class="wood wood01">
+                                            <h3>Termina el {{media.finish}}</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article></a>
+                        {% endif %}
+
+                        {% if media.owner %}
+                            <a href="#"><article class="planet">
+                                <div class="orbit">
+                                    <div class="air">
+                                        <div class="google">
+                                            <img src="/static/img/backs/6.jpg">
+                                        </div>
+                                    </div><div class="earth">
+                                        <div class="wood wood01">
+                                            <h3><span class="hare" id="mediaCategoryA{{media.mediaCategory.id}}"></span>{{media.owner}}</h3>
+                                        </div>
+                                        <div class="wood wood02">
+                                            <h5 ><span class="hare"></span>Quito</h5>
+                                            <h5 ><span class="hare"></span>Restaurant</h5>
+                                            <h5 ><span class="hare"></span>Vegetariano</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article></a>
+                        {% endif %}
+
+            </section>
+
+
+        {% endif %}
+        {% endfor %}
+        </div>
+        </section> 
+    {%  endfor %}
+
+
+{%endif%}
+
+
+
+
+
+<!--USERPROFILE -->
+{%if userprofile.slug%}
+
+            <section id="sideA" class="sideA">
+                <section class="names"><article class="planet">
+                                        <div class="orbit">
+                                            <div class="air">
+                                                <span class="hare"></span>
+                                            </div><div class="earth">
+                                                <div class="wood wood01">
+                                                    <h3>EXPERIENCIA</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                </article></section>
+                <p>{{userprofile.body}}</p>            
+            </section>
+
+    {% for mediaCategory in mediaCategory %}
+
+            <script type="text/javascript">
+        function media{{mediaCategory.id}}()
+            {
+                    if(document.getElementById('cat{{mediaCategory.id}}').className == 'cat{{mediaCategory.id}}')
+                    {  
+
+                    {% for media in media %}
+                    document.getElementById('cat{{media.mediaCategory.id}}').className = 'cat{{media.mediaCategory.id}}';
+                    {% endfor %}
+                    document.getElementById('cat{{mediaCategory.id}}').className = 'cat{{mediaCategory.id}}0';
+                    document.getElementById('sideA').className = 'sideA0';
+                    document.getElementById('menguante').className = 'menguante0';
+                    document.getElementById('fullmoon').className = 'fullmoon';
+
+                    } else {
+                        {% for media in media %}
+                    document.getElementById('cat{{media.mediaCategory.id}}').className = 'cat{{media.mediaCategory.id}}';
+                    {% endfor %}
+                    document.getElementById('cat{{mediaCategory.id}}').className = 'cat{{mediaCategory.id}}';
+                    document.getElementById('sideA').className = 'sideA';
+                    document.getElementById('menguante').className = 'menguante0';
+                    document.getElementById('fullmoon').className = 'fullmoon';
+                            }
+            } 
+            </script>
+
+
+            <style type="text/css">
+        .cat{{mediaCategory.id}}{
+            opacity: 0;
+            position: absolute;
+            overflow: hidden;
+            height: 0px;
+            z-index: 0;
+        }
+        .cat{{mediaCategory.id}}0{
+            opacity: 1;
+        }
+
+        .sideA0{
+            display: none;
+        }
+        .fullmoon0{
+            display: none;
+        }
+            </style>
+
+
+
+        <section class="cat{{mediaCategory.id}}" id="cat{{mediaCategory.id}}">
+        <div class="catOpen">
+
+        {% for media in media %}
+
+        {% if media.mediaCategory.id == mediaCategory.id and media.profile.id == userprofile.id %}
+                
+                                    <style type="text/css">
+                                    #mediaCategoryb{{mediaCategory.id}}{
+                                     background: {{userprofile.section.color}} url(/media/{{mediaCategory.photo}})no-repeat center center;
+                                      background-size: 90% 90%;
+                                     }
+                                     #mediaCategoryA{{mediaCategory.id}}{
+                                     background: #B1B1B1 url(/media/{{mediaCategory.photo}})no-repeat center center;
+                                      background-size: 90% 90%;
+                                     }
+                                     </style>
+                        
+
+            <section class="gogHtml">
+
+                    <section class="names">        
+                        <article class="planet">
+                            <div class="orbit">
+                                <div class="air">
+                                    <span class="hare" id="mediaCategoryb{{media.mediaCategory.id}}"></span>
+                                </div><div class="earth">
+                                    <div class="wood wood01">
+                                        <h3>{{media.mediaCategory}}</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </section>
+
+                        {% if media.html %}
+                            {{media.html|safe}}
+                        {% endif %}
+
+                        {% if media.archive %}
+
+                            {% if media.extension_class == ".jpg" %}
+                                <img src="/media/{{media.archive}}">
+                            {% endif %}
+
+                            {% if media.extension_class == ".mp3" %}
+                                <article class="planet">
+                                    <div class="orbit">
+                                        <div class="air">
+                                            <span class="hare" id="mediaCategoryA{{media.mediaCategory.id}}"></span>
+                                        </div><div class="earth">
+                                            <div class="wood wood01">
+                                                <audio controls>
+                                              <source src="/media/{{media.archive}}" type="audio/mpeg">
+                                            Your browser does not support the audio element.
+                                            </audio>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+                            {% endif %}
+
+                            {% if media.extension_class == ".mp4" %}
+                                <video width="320" height="240" controls>
+                                    <source src="/media/{{media.archive}}" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>   
+                            {% endif %}
+
+                            {% if media.extension_class == ".pdf" %}
+                                <a href="/media/{{media.archive}}" target="_blank"><article class="planet">
+                                    <div class="orbit">
+                                        <div class="air">
+                                            <span class="hare" id="mediaCategoryA{{media.mediaCategory.id}}"></span>
+                                        </div><div class="earth">
+                                            <div class="wood wood01">
+                                                <h4><p><strong>Descargar</strong>{{media.extension_class}}</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article></a>
+                                <embed src="/media/{{media.archive}}" width="100%" height="auto" alt="pdf" pluginspage="http://www.adobe.com/products/acrobat/readstep2.html">
+                            {% endif %}
+
+                                <a href="/media/{{media.archive}}" target="_blank"><article class="planet">
+                                    <div class="orbit">
+                                        <div class="air">
+                                            <span class="hare" id="mediaCategoryA{{media.mediaCategory.id}}"></span>
+                                        </div><div class="earth">
+                                            <div class="wood wood01">
+                                                <h4><p><strong>Descargar</strong>{{media.extension_class}}</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article></a>
+                        {% endif %}
+
+                        {% if media.description %}  
+                            <a href="#"><article class="planet">
+                                <div class="orbit">
+                                    <div class="air">
+                                        <span class="hare" id="mediaCategoryA{{media.mediaCategory.id}}"></span>
+                                    </div><div class="earth">
+                                        <div class="wood wood01">
+                                            <h4>{{media.description|safe}}</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article></a>
+                        {% endif %}
+
+                        {% if media.start %}
+                            <a href="#"><article class="planet">
+                                <div class="orbit">
+                                    <div class="air">
+                                        <span class="hare" id="mediaCategoryA{{media.mediaCategory.id}}"></span>
+                                    </div><div class="earth">
+                                        <div class="wood wood01">
+                                            <h3>Comienza el {{media.start}}</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article></a>
+                        {% endif %}
+
+                        {% if media.finish %}
+                            <a href="#"><article class="planet">
+                                <div class="orbit">
+                                    <div class="air">
+                                        <span class="hare" id="mediaCategoryA{{media.mediaCategory.id}}"></span>
+                                    </div><div class="earth">
+                                        <div class="wood wood01">
+                                            <h3>Termina el {{media.finish}}</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article></a>
+                        {% endif %}
+
+                        {% if media.owner %}
+                            <a href="#"><article class="planet">
+                                <div class="orbit">
+                                    <div class="air">
+                                        <div class="google">
+                                            <img src="/static/img/backs/6.jpg">
+                                        </div>
+                                    </div><div class="earth">
+                                        <div class="wood wood01">
+                                            <h3><span class="hare" id="mediaCategoryA{{media.mediaCategory.id}}"></span>{{media.owner}}</h3>
+                                        </div>
+                                        <div class="wood wood02">
+                                            <h5 ><span class="hare"></span>Quito</h5>
+                                            <h5 ><span class="hare"></span>Restaurant</h5>
+                                            <h5 ><span class="hare"></span>Vegetariano</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article></a>
+                        {% endif %}
+
+            </section>
+
+
+        {% endif %}
+        {% endfor %}
+        </div>
+        </section> 
+    {%  endfor %}
+
+
+{%endif%}

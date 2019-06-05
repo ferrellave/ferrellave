@@ -1,0 +1,7 @@
+{%for config in config%}
+{%if config.content%}
+<section class="release">
+	<h3>{{config.content|safe}}</h3>
+</section>
+{%endif%}
+{%endfor%}

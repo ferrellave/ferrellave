@@ -1,0 +1,91 @@
+<section class="maps">
+
+{%if config.maps%}
+
+{{config.maps|safe}}
+
+{%else%}
+<script >
+
+
+function initMap() {
+
+  // Specify features and elements to define styles.
+  var styleArray = [
+    {
+      featureType: "all",
+      stylers: [
+       { saturation: -80 }
+      ]
+    },{
+      featureType: "road.arterial",
+      elementType: "geometry",
+      stylers: [
+        { hue: "#00ffee" },
+        { saturation: 50 }
+      ]
+    },{
+      featureType: "poi.business",
+      elementType: "labels",
+      stylers: [
+        { visibility: "off" }
+      ]
+    }
+  ];
+
+  var map = new google.maps.Map(document.getElementById('map'), {
+    center: new google.maps.LatLng(-0.2231518, -78.5544109),
+    // Apply the map style array to the map.
+    styles: styleArray,
+    zoom: 9
+  });
+
+
+
+  {% for userprofile in userprofile %}
+
+{% if userprofile.address.lat and userprofile.address.lng%}
+
+var image{{userprofile.id}} = {
+    url: '/media/{{userprofile.background}}',
+    size: new google.maps.Size(100, 100),
+    origin: new google.maps.Point(20, 20),
+    anchor: new google.maps.Point(10, 10)
+  };
+
+var place{{userprofile.id}} = new google.maps.LatLng({{userprofile.address.lat}},{{userprofile.address.lng}});
+var marker{{userprofile.id}} = new google.maps.Marker({
+        position: place{{userprofile.id}},
+        title: '{{userprofile.user}}',
+        map: map,
+       // icon: image{{userprofile.id}},
+        });
+
+
+var contentString{{userprofile.id}} = '<div class="tableMap"><div class="tableMapA"><img src="/media/{{userprofile.background}}" /></div><div class="tableMapB"><p>{{userprofile.profile}}</p></br><a href="{% url 'blog.userprofile_detail' userprofile.slug %}" class="look" >Visita {{userprofile.user}}</a></div></div>';
+
+var infowindow{{userprofile.id}} = new google.maps.InfoWindow({
+    content: contentString{{userprofile.id}}
+  });
+
+marker{{userprofile.id}}.addListener('click', function() {
+    infowindow{{userprofile.id}}.open(map, marker{{userprofile.id}});
+  });
+
+
+{% endif %}
+{% endfor %}
+
+
+}
+
+</script>
+
+ <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvrpMYA6xf3Uqx5ES3qDI_SbU6n2Eiz28&signed_in=true&callback=initMap"
+        async defer></script>
+
+<div id="map" class="map"></div>
+
+{%endif%}
+
+</section>

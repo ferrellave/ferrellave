@@ -1,0 +1,26 @@
+
+{%if userprofile.slug%}
+<a href="{% url 'blog.userprofile_detail' userprofile.slug %}"><article class="saturn" >
+{%else%}
+<a href="#"><article class="saturn">
+{%endif%}
+<span class="ring" id="saturn{{userprofile.id}}"></span>
+<h2>{{userprofile.name}}{%if userprofile.photo%}<span></span>{%endif%}</h2>
+</article></a>
+
+<style type="text/css">
+{%if not userprofile.photo%}
+#saturn{{userprofile.id}}{
+    background: {{userprofile.profile.color}} url(/media/{{userprofile.profile.photo}}) no-repeat center center;
+    background-size: cover;
+}
+{%else%}
+#saturn{{userprofile.id}}{
+    background: {{userprofile.profile.color}} url(/media/{{userprofile.photo}}) no-repeat center center;
+    background-size: cover;
+}
+.menguante{
+	background: #fff!important;
+}
+{%endif%}
+</style>

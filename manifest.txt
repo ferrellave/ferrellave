@@ -1,0 +1,139 @@
+Con Almaginet Org es más Facil organizar las presentaciones de tus Proyectos en Internet. Crea un perfil hoy y comienza a publicar ahora mismo
+
+La red de emprendimiento buho.io es una plataforma que conecta negocios, ideas y experiencias en todo el mundo, desarrollado en 2016 con codigo python, permite a emprendedores convertir sus ideas en codigo y su codigo en nuevas empresas.
+
+La suscripción a la red incluye capacitación profesional por una semana para transformar una idea de negocio en una startUp y brinda la licencia para el uso del buho development kit que consta de una plataforma adaptable y lista para lanzar un producto digital con hosting y dominio incluido por un año.
+
+¿Listo para iniciar?
+
+Contacta con un profesional.
+
+El costo de la inversión es de 500 USD.
+
+
+--> Compras
+--> Redes Sociales _> Hash con tw e instagram. Comentarios con Fb - Compartir - Twittear.
+
+
+Andrés Osorio
+
+Productor digital.
+
+Formado en ingenieria de sistemas, co-fundador de almaginet.com empresa dedicada al desarrollo de software, adquiere conocimientos en politicas sociales y digitales tras varios años de experiencia desarrollando aplicaciones web para instituciones y grandes eventos culturales en Venezuela, ganador del startup Weekend Medellin 2015 con el grupo "Meet Cena" y del VI Game Jam de la pontifice Universidad Javeriana de Bogotá junto al equipo "Minga" en Colombia donde consolida su carrera en negocios digitales, organizador de diversos eventos para promover el emprendimiento y la educación tecnologica en el Ecuador. Andrés escribe poesia y experimenta con la guitarra electrica cuando no esta programando para los proyectos en los que colabora. Aunque ha dirigido diversas areas de la producción digital, se considera Frontend Developer.
+
+
+
+shhhhhhhh
+
+
+Inscribete
+Agregar Post
+Redireccionar usuario a usuario
+post de usuario horizontal
+bio de usuario
+
+link cerrar full
+links abrir full 
+map
+img
+video
+
+right con comentarios
+top right con redes
+
+categorias de usuario
+
+boton mas: full
+top mas full con info
+
+¿BUSCADOR?
+¿FILTROS DEL BUSCADOR??
+reproductor de musica
+
+MULTIIDIOMA???
+
+PUNTAJES????
+
+RESPONSIVE
+
+TINY IMG???
+
+LUGARES????
+POR SECTOR: LA FOCH LA RONDA
+				CC
+
+LOGOS Y BACKS PREDETERMINADOS
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Imagenes
+Descripciones
+
+PROGRAMAR:
+PRECIOS
+30 IMAGENES
+PAYPAL
+
+TAGS --> FILTRAR POR TIPOS DE HAMACAS
+
+
+COMO COMPRAR
+CONTACTO --> PEDIR EMAIL
+
+URL
+
+-REDES
+
+
+
+
+
+
+
+--------------
+
+RED DE ARTISTAS DIGITALES
+
+
+
+
+
+
+
+
+
+yoga.almaginet.org
+metal.almaginet.org
+spa.almaginet.org
+
+medicina natural, medicina holistica, terapias holisticas,
+yoga, 
+
+
+
+
+<!--
+    {% if perms.article.can_change %}
+    <a href="{% url 'blog.editar' article.slug %}" class="btn btn-primary">Editar</a>
+	{% endif %}
+
+	{% if perms.article.can_delete %}
+    <a href="{% url 'blog.eliminar' article.slug %}" class="btn btn-danger">Eliminar</a>
+	{% endif %}
+
+    <div class="comentarios">
+         Aquí los comentarios -->
+
+    </div>

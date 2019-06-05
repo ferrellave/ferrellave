@@ -1,0 +1,10 @@
+{% extends 'blog/base_blog.html' %}
+
+{% block title %}{% for article in article %}
+{% if article.slug == link.slug %}{{article.title}}{%endif%}{%endfor%} on {% for config in config %}{{config.webName}}{%endfor%}{% endblock title %}
+
+{% block blog_content %}
+    {% include 'blog/_article.html' %}
+    
+
+{% endblock blog_content %}

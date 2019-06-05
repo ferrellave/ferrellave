@@ -1,0 +1,59 @@
+{% extends 'accounts/base_accounts.html' %}
+
+{% block title %}Perfil de usuario{% endblock title %}
+
+{% block accounts_content %}
+
+<header class="containerTop">
+        <div class="containerNavHeaderTop">
+        </div>
+        <div class="avatarPrincipal"></div>
+        <h2>
+            <style type="text/css">
+            .avatarPrincipal{
+  background: {{config.color}} url({{ MEDIA_URL }}{{ user.userprofile.photo }}) no-repeat center center!important;
+background-size: 90%!important;
+}
+            </style>
+
+            {{ user.username }}</h2>
+        <h3></h3>
+        <a href="#" class="btnPrincipal">ÚNETE</a>
+
+        <div class="containerNavHeader">
+
+
+        <li class="navPrincipalLeftLi"><a href=""><span class="navPrincipalLogo" id="navPrincipalLogoS" ></span></a></li>
+       
+        </div>
+
+</header>
+
+<section class="containerMiddle">
+
+    <h5 class="titles01">
+        Explora Experiencias
+        <a href="#">Más Experiencias</a>
+    </h5>
+
+    {% for article in article %}
+
+    <article class="articleContainer">
+        <div class="articleTop">
+            <p>El {{ article.create_at|date:'d F Y' }}<span>Hace {{ article.create_at|timesince }}</span></p>
+        </div>
+        <a href="{% url 'blog.article_detail' article.slug %}"><div class="articleImg" id="articleImg{{article.id}}"></div></a>
+        <h4 class="articleTitle"><a href="{% url 'blog.article_detail' article.slug %}">{{ article.title }}</a></h4>
+
+        <div class="articleBody">
+            <p>{{ article.body|safe }}</p>
+        </div>
+
+        <div class="articleBottom">
+            <a href="#" class="articleOwner">Por: {{ article.owner.username }}</a>
+        </div>
+    </article>
+    {% endfor %}
+
+</section>  
+{% endblock accounts_content %}

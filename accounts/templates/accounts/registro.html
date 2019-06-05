@@ -1,0 +1,90 @@
+{% extends 'blog/base_blog.html' %}
+
+{% block title %}Login{% endblock title %}
+
+{% block content %}
+{% for config in config %}
+<style type="text/css">
+.page-header{
+    background: {{config.color01}}!important;
+}
+.formBack{
+    background: {{config.color}} url(/media/{{config.logo}}) no-repeat center center!important;
+    background-size: auto 80%!important;
+}
+.look{
+    background: url(/static/img/icons/6.png) {{config.color02}} no-repeat 10px center!important;
+    background-size: 30px!important;
+}
+#id_body{
+    border: 3px solid {{config.color02}};
+}
+#id_section{
+    border: 3px solid {{config.color02}};
+}
+#id_title{
+    border: 3px solid {{config.color02}};
+}
+    .loginBottom {
+        font-family: oswald;
+        font-size: 16px;
+    }
+    .loginBottom a{
+        font-family: oswald;
+        font-size: 16px;
+        color: red;
+    }
+</style>
+{%endfor%}
+
+    <!--CONFIG -->
+     {% include 'blog/modules/_config.html' %}
+
+    <!--/////////////////BARRAS DE MENUS -->
+
+    {% include 'blog/modules/_menubars.html'%}
+
+<section class="universe1" id="universe">
+<section class="log">
+
+<section class="forma">
+    <article class="containerForm">
+        <div class="containerFormDiv">
+
+    <div class="row">
+        <div class="col-md-6 col-sm-offset-3">
+            <div class="page-header">
+                <h2>Suscribete para recibir promociones y descuentos especiales</h2>
+            </div>
+
+            <form method="post" action="" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+            
+                <strong></strong>
+</br>                
+<button type="submit" class="look">Suscribirse</button>
+            </form>
+        </div>
+    </div>
+
+     <p class="loginBottom">¿Ya estás suscrito? <a href="{% url 'accounts.login'%}">ingresa aqui</a></p>
+
+      <!--MENU BOTTOM 
+        <a href="/"><section class="formBack"></section></a> -->
+
+</div>
+</article>
+</section>   
+
+</section>
+
+{% include 'blog/modules/_footer.html' %}
+</section>
+
+    <!--SLIDE MENU PRINCIPAL EXPLORAR -->
+    <section class="gog" id="gog">
+        {% include 'blog/modules/_gog.html'%}
+    </section>
+{% endblock content %}
+

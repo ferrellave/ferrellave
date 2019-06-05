@@ -1,0 +1,45 @@
+     {%if section.slug%}
+      {% for section2 in section2 %}
+        <li class="engel"><a href="{% url 'blog.section_detail' section2.slug %}"><span id="engelSpan{{section2.slug}}"></span>{{section2.name}}</a></li>
+        {% endfor %}
+     {%endif%}
+
+     {%if article.slug%}
+     {% for section in section %}
+        <li class="engel"><a href="{% url 'blog.section_detail' section.slug %}"><span id="engelSpan{{section.slug}}"></span>{{section.name}}</a></li>
+     {% endfor %}
+     {%endif%}
+
+     {%if profile.slug%}
+     {% for section in section %}
+        <li class="engel"><a href="{% url 'blog.section_detail' section.slug %}"><span id="engelSpan{{section.slug}}"></span>{{section.name}}</a></li>
+     {% endfor %}
+     {%endif%}
+
+     {%if tag.slug%}
+     {% for section in section %}
+        <li class="engel"><a href="{% url 'blog.section_detail' section.slug %}"><span id="engelSpan{{section.slug}}"></span>{{section.name}}</a></li>
+     {% endfor %}
+
+     {% for trend in trend %}
+        {%if trend.tag.id == tag.id %}
+        <li class="engel"><a href="{% url 'blog.trend_detail' trend.slug %}"><span class="engelSpan{{trend.slug}}"></span>{{trend.name}}</a></li>
+        {%endif%}
+        {% endfor %}
+
+     {%endif%}
+
+     {%if trend.slug%}
+     {% for section in section %}
+        <li class="engel"><a href="{% url 'blog.section_detail' section.slug %}"><span class="engelSpan{{section.slug}}"></span>{{section.name}}</a></li>
+     {% endfor %}
+
+     {%endif%}
+
+     {%if not section.slug and not article.slug and not profile.slug and not tag.slug and not trend.slug%}
+
+     {% for section in section %}
+        <li class="engel"><a href="{% url 'blog.section_detail' section.slug %}"><span id="engelSpan{{section.slug}}"></span>{{section.name}}</a></li>
+     {% endfor %}
+
+     {%endif%}
