@@ -292,7 +292,7 @@ def contact(request):
             correo = formulario.cleaned_data['correo']
             asunto = correo, 'Su mensaje ha sido enviado'
             mensaje = formulario.cleaned_data['mensaje']
-            mail = EmailMessage(asunto, mensaje, to=[correo, 'almaginet@gmail.com'])
+            mail = EmailMessage(asunto, mensaje, to=[correo, 'webferrellave@gmail.com'])
             mail.send()
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'), {'titulo': titulo})
     else:
